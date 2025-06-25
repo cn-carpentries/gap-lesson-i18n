@@ -1,5 +1,5 @@
 ---
-title: 与GAP的第一次会话
+title: First session with GAP
 teaching: 30
 exercises: 10
 ---
@@ -48,22 +48,22 @@ GAP。 GAP始于显示系统版本的
 -6700417
 ```
 
-If you want to record what you did in a GAP session, so you can look over it
-later, you can enable logging with the `LogTo` function, like this.
+如果您想记录您在 GAP 会话中所做的事情，那么您可以稍后查看
+。 您可以使用 LogTo\` 函数启用日志记录。
 
 ```gap
-LogTo("gap-intro.log");
+LogTo("gap-intro.log")；
 ```
 
 This will create a file file `gap-intro.log` in the current directory which
 will contain all subsequent input and output that appears on your terminal.
-To stop logging, you can call `LogTo` without arguments, as in `LogTo();`,
-or leave GAP. Note that `LogTo` blanks the file before starting, if it
+要停止登录，您可以在没有参数的情况下调用 `LogTo` ，例如在 `LogTo();`,
+或退出 GAP。 Note that `LogTo` blanks the file before starting, if it
 already exists!
 
 It can be useful to leave some comments in the log file in case you
-return to it in the future. A comment in GAP starts with the symbol `#` and
-continues to the end of the line. You can enter the following after the
+return to it in the future. GAP中的注释以符号`#`开头，
+继续到行尾。 You can enter the following after the
 GAP prompt:
 
 ```gap
@@ -125,8 +125,8 @@ universe := 6*7;
 - GAP uses `=` to compare if two things are the same (where other languages might
   use `==`).
 
-- Finally, GAP uses `<>` to check if two things are not equal (rather than the `!=`
-  you might have seen before).
+- 最后，GAP使用`<>`来检查两件事是否不等价(而不是你以前可能看到的`!=`
+  )。
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
