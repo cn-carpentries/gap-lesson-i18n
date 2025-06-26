@@ -1,5 +1,5 @@
 ---
-title: First session with GAP
+title: 与GAP的第一次会话
 teaching: 30
 exercises: 10
 ---
@@ -63,22 +63,22 @@ already exists!
 
 It can be useful to leave some comments in the log file in case you
 return to it in the future. GAP中的注释以符号`#`开头，
-继续到行尾。 You can enter the following after the
-GAP prompt:
+继续到行尾。 您可以在
+GAP 提示后输入以下内容：
 
 ```gap
-# GAP Software Carpentry Lesson
+# GAP 软件木工课程
 ```
 
-then after pressing the Return key, GAP will display a new prompt but the comment
-will be written to the log file.
+然后按返回键后，GAP将显示一个新提示, 但评论
+将被写入日志文件。
 
-The log file records all interaction with GAP that happens after the call
-to `LogTo`, but not before. We can repeat our calculation from above
-if we want to record it as well. Instead of retyping it, we will use the Up and Down
-arrow keys to scroll the _command line history_. Repeat this until you see
-the formula again, then press Return (the location of the cursor in the command
-line does not matter):
+日志文件记录所有与 GAP 的交互，这些交互发生在调用
+到 `LogTo` 之后，但不是之前。 如果我们想要将其记录下来，我们可以重复上述
+的计算。 Instead of retyping it, we will use the Up and Down
+arrow keys to scroll the _command line history_. 重复此操作，直到您再次看到
+的公式，然后按返回键(指向
+命令中的光标位置不重要)：
 
 ```gap
 ( 1 + 2^32 ) / (1 - 2*3*107 );
@@ -88,12 +88,12 @@ line does not matter):
 -6700417
 ```
 
-You can also edit existing commands. Press Up once more, and then use the
-Left and Right arrow keys, Delete or Backspace to edit it and replace
-32 by 64 (some other useful shortcuts are
-Ctrl-A and Ctrl-E to move the cursor to the beginning and end of the
-line, respectively). Now press the Return key (at any position of the
-cursor in the command line):
+您也可以编辑现有的命令。 再次按住，然后使用
+左箭头和右箭头键， 删除或后空格来编辑它，并将
+32 替换为 64 (其他一些有用的快捷方式是
+Ctrl-A和Ctrl-E 来移动光标到
+行的开头和结尾。 分别为两部分。 现在按返回键(命令行中的
+光标的任何位置)：
 
 ```gap
 ( 1 + 2^64 ) / (1 - 2*3*107 );
@@ -108,8 +108,7 @@ perform a partial search by typing the initial part of the command and using
 Up and Down arrow keys after that, to scroll only the lines that begin with
 the same string.
 
-If you want to store a value for later use, you can assign it to a name
-using `:=`
+如果您想要存储一个值以供日后使用，您可以使用`:=`来分配它到一个名称
 
 ```gap
 universe := 6*7;
@@ -117,10 +116,10 @@ universe := 6*7;
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-## `:=`, `=` and `<>`
+## `:=`, `=` 和 `<>`
 
-- In other languages you might be more familiar with using `=`, to assign
-  variables, but GAP uses `:=`.
+- 在其他语言中，您可能更熟悉使用 `=`，来分配
+  变量，但GAP 使用 `:=`。
 
 - GAP uses `=` to compare if two things are the same (where other languages might
   use `==`).
@@ -130,9 +129,9 @@ universe := 6*7;
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Whitespace characters (i.e. Spaces, Tabs and Returns) are insignificant in GAP,
-except if they occur inside a string. For example, the previous input
-could be typed without spaces:
+空格字符(例如) GAP，
+除非它们发生在字符串内，否则空间、标签和回归都微不足道。 例如，上一个输入
+可以在没有空格的情况下输入：
 
 ```gap
 (1+2^64)/(1-2*3*107);
