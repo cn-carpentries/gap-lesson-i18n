@@ -141,49 +141,49 @@ universe := 6*7;
 -18446744073709551617/641
 ```
 
-Whitespace symbols are often used to format more complicated commands for
-better readability. For example, the following input which creates a 3×3 matrix:
+白空间符号常用来格式化更复杂的
+更好的可读性。 例如，创建3×3矩阵的以下输入：
 
 ```gap
-m:=[[1,2,3],[4,5,6],[7,8,9]];
+m:=[1,2,3],[4,5,6],[7,8,9]]；
 ```
 
 ```output
 [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ]
 ```
 
-We can instead write our matrix over 3 lines. In this case, instead of the full prompt
+相反，我们可以用三行写我们的矩阵。 In this case, instead of the full prompt
 `gap>`, a partial prompt `>` will be displayed until the user finishes
 the input with a semicolon:
 
 ```gap
 gap> m:=[[ 1, 2, 3 ],
->        [ 4, 5, 6 ],
->        [ 7, 8, 9 ]];
+> [ 4, 5, 6 ],
+> [ 7, 8, 9 ]]；
 ```
 
 ```output
 [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ]
 ```
 
-You can use `Display` to pretty-print variables, including this matrix:
+您可以使用 "Display" 来预打印变量，包括此矩阵：
 
 ```gap
-Display(m);
+显示(m)；
 ```
 
 ```output
-[ [  1,  2,  3 ],
-  [  4,  5,  6 ],
-  [  7,  8,  9 ] ]
+[ 1、2、3]、
+  [ 4、5、6]、
+  [ 7、8、9]
 ```
 
-In general GAP functions like `LogTo` and `Display` are called using brackets,
-which contain a (possibly empty) list of arguments.
+一般而言，GAP函数，如`LogTo`和`Display`，使用括号调用，
+包含一个(可能为空的)参数列表。
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-## Functions are also GAP objects
+## 函数也是 GAP 对象
 
 Check what happens if you forget to add brackets,
 e.g. type `LogTo;` and `Factorial;`
