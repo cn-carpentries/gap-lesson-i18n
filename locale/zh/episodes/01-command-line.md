@@ -185,28 +185,28 @@ gap> m:=[[ 1, 2, 3 ],
 
 ## 函数也是 GAP 对象
 
-Check what happens if you forget to add brackets,
-e.g. type `LogTo;` and `Factorial;`
-We will explain the differences in these outputs later.
+检查如果您忘记添加括号，
+例如输入 `LogTo;` 和 `Factorial;`
+我们将稍后解释这些输出中的差异。
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Here are some examples of calling other GAP functions:
+以下是调用其他GAP功能的一些例子：
 
 ```gap
-Factorial(100);
+工厂(100)；
 ```
 
 ```output
-93326215443944152681699238856266700490715968264381621468\
-59296389521759999322991560894146397615651828625369792082\
-7223758251185210916864000000000000000000000000
+933266215443944152681699238856670000715968264381621468\
+59296389521759999229929915608941463976156518262532569792082\
+7223758251185109168640000000000000000000000000
 ```
 
-(the exact width of output will depend on your terminal settings),
+(输出的确切宽度将取决于您的终端设置)，
 
 ```gap
-Determinant(m);
+a. 决定因素(m)；
 ```
 
 ```output
