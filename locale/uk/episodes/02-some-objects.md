@@ -1,5 +1,5 @@
 ---
-title: Some more GAP objects
+title: Ще декілька об'єктів GAP
 teaching: 15
 exercises: 5
 ---
