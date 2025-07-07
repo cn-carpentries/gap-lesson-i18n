@@ -1,35 +1,35 @@
 ---
-title: Using regression tests
+title: 使用回归测试
 teaching: 40
 exercises: 10
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Be able to create and run test files
-- Understand how test discrepancies and runtime regressions can be identified and interpreted
-- Understand how to adjust tests to check randomised algorithms
-- Learn the 'Make it right, then make it fast' concept
+- 能够创建和运行测试文件
+- 了解如何识别和解释测试差异和运行时回归。
+- 了解如何调整测试以检查随机算法
+- 学习“让它对错，然后使它更快”概念
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- Test-driven development
+- B. 禁毒驱动的发展
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-The code of `AvgOrdOfGroup` is very simple, and nothing could possibly go wrong
-with it. By iterating over the group instead of creating a list of its elements,
+`AvgOrdOfGroup`的代码非常简单，任何东西都不可能有错误的
+By iterating over the group instead of creating a list of its elements,
 it avoids running out of memory
 (calling `AsList(SymmetricGroup(11))` already results in exceeding the permitted
-memory). That said, the computation still takes time, with several minutes
-needed to calculate the average order of an
-element of `SymmetricGroup(11)`. But at least we are confident that it is
+memory). 尽管如此，计算仍然需要时间，需要几分钟的
+来计算`对称组(11)`的
+元素的平均顺序。 But at least we are confident that it is
 correct.
 
-Now we would like to write a better version of this function using some
-theoretical facts we know from Group Theory. We may put
+现在我们想使用我们从群组理论上了解的一些
+理论事实来编写这个功能的更好版本。 We may put
 `avgord.g` under version control to revert changes if need be;
 we may create a new function to keep the old one around and compare the
 results of both; but this could be made even more efficient if we
@@ -37,7 +37,7 @@ use **regression testing**: this is the term for testing based on
 rerunning previously completed tests to check that new changes do not
 impact their correctness or worsen their performance.
 
-To start with, we need to create a **test file**. The test file looks
+首先，我们需要创建一个 **测试文件** 。 The test file looks
 exactly like a GAP session, so it is easy to create it by copying and
 pasting a GAP session with all GAP prompts, inputs and outputs into a
 text file (a test file could be also created from a log file with a
@@ -45,101 +45,101 @@ GAP session recorded with the help of `LogTo`). During the test, GAP will
 run all inputs from the test file, compare the outputs with those in the test
 file and report any differences.
 
-GAP test files are just text files, but the common practice is to name
-them with the extension `.tst`. Now create the file `avgord.tst` in the current directory (to
+GAP 测试文件只是文本文件，但通常的做法是用扩展`.tst`命名
+它们。 Now create the file `avgord.tst` in the current directory (to
 avoid typing the full path) with the following content:
 
 ```gap
-# tests for average order of a group element
+# 组元素平均顺序测试
 
-# permutation group
-gap> S:=SymmetricGroup(9);
-Sym( [ 1 .. 9 ] )
-gap> AvgOrdOfGroup(S);
+# 许可组
+gap> S:=对称组(9);
+符号 ( [ 1 .
+gap> AvgOrdOfGroup(S)；
 3291487/362880
 ```
 
-As you see, the test file may include comments, with certain rules specifying
-where they may be placed, because one should be able to distinguish comments
-in the test file from GAP output started with `#`. For that purpose,
-lines at the beginning of the test file that start with `#`, and one empty line
-together with one or more lines starting with `#`, are considered as comments.
-All other lines are interpreted as GAP output from the preceding GAP input.
+正如你所看到的那样，测试文件可能包含注释，某些规则指定
+它们可以放置在哪里， 因为我们应该能够区分测试文件中的注释
+和 GAP 输出以 '#' 开始。 为此目的，
+行在以`#`开头的测试文件的开头， 和一条空行
+连同一条或多条开头的行被视为评论。
+所有其他行都被解释为先前GAP输入的GAP输出。
 
-To run the test, one should use the function `Test` (see
-[documentation](https://docs.gap-system.org/doc/ref/chap7.html#X87712F9D8732193C).
-For example (assuming that the function `AvgOrdOfGroup` is already loaded):
+要运行测试，需要使用函数 `Test` (见
+[documentation](https://docs.gap-system.org/doc/ref/chap7.html#X87712F9D8732193C)。
+例如(假设函数`AvgOrdOfGroup`已加载)：
 
 ```gap
-Test("avgord.tst");
+测试("avgord.tst");
 ```
 
 ```output
 true
 ```
 
-In this case, `Test` reported no discrepancies and returned `true`, so we
-conclude that the test has passed.
+在这种情况下，`Test`报告没有出入，返回`true`，所以我们
+认为测试已经通过了。
 
-We will not cover the topic of writing a good and comprehensive test suite here,
-nor will we cover the various options of the `Test` function, allowing us, for
-example, to ignore differences in the output formatting, or to display the progress
-of the test, as these are described in its documentation.
+我们将不涉及在这里撰写一套良好和全面的试验材料。
+我们也不会覆盖`Test`函数的各种选项，允许我们使用 为
+示例，忽略输出格式中的差异 或显示测试的进度
+，因为这些都在其文件中作了说明。
 
-Instead, we will now add more groups to `avgord.tst`, to demonstrate that the
-code also works with other kinds of groups, and to show various ways of
-combining commands in the test file:
+相反，我们现在将添加更多的小组。 st\`, 以证明
+代码也适用于其他类型的组 并显示测试文件中包含命令的
+的各种方式：
 
 ```gap
-# tests for average order of a group element
+# 组元素平均顺序测试
 
-# permutation group
-gap> S:=SymmetricGroup(9);
-Sym( [ 1 .. 9 ] )
-gap> AvgOrdOfGroup(S);
-3291487/362880
+# 许可组
+gap> S:=对称组(9);
+符号 ( [ 1 ...
+gap> AvgOrdOfGroup(S)；
+3291487/36280
 
 # pc group
-gap> D:=DihedralGroup(512);
+gap> D：=DihedralGroup(512)；
 <pc group of size 512 with 9 generators>
-gap> AvgOrdOfGroup(D);
+gap> AvgOrdOfGroup(D)；
 44203/512
-gap> G:=TrivialGroup();; # suppress output
+gap> G:=TrivialGroup();# 压制输出
 gap> AvgOrdOfGroup(G);
 1
 
 # fp group
 gap> F:=FreeGroup("a","b");
 <free group on the generators [ a, b ]>
-gap> G:=F/ParseRelators(GeneratorsOfGroup(F),"a^8=b^2=1, b^-1ab=a^-1");
+gap> G:=F/ParseRelators(GeneratorsOfGroup(F),"a^8=b^2=1, b^-1ab=a^-1")；
 <fp group on the generators [ a, b ]>
-gap> IsFinite(G);
+gap> IsFinite(G)；
 true
-gap> AvgOrdOfGroup(G);
+gap> AvgOrdOfGroup(G)；
 59/16
 
-# finite matrix group over integers
-gap> AvgOrdOfGroup( Group( [[0,-1],[1,0]] ) );
+# 有限矩阵组的整数
+gap> AvgOrdOfGroup( Group( [[[0,-1],[1,0]] );
 11/4
 
-# matrix group over a finite field
-gap> AvgOrdOfGroup(SL(2,5));
+# 有限字段上的矩阵组
+gap> AvgOrdOfGroup(SL(2.5))；
 221/40
 ```
 
-Let us test the extended version of the test again and check that it works:
+让我们再次测试扩展版本的测试，并检查它是否起作用：
 
 ```gap
-Test("avgord.tst");
+测试("avgord.tst");
 ```
 
 ```output
 true
 ```
 
-Now we will work on a better implementation. Of course, the order of an element
-is an invariant of a conjugacy class of elements of a group, so we need only to
-know the orders of conjugacy classes of elements and their representatives. The
+现在我们将努力改进执行工作。 当然，元素
+的顺序是一组元素的一种未婚夫妻。 所以我们只需要
+知道婚姻各类要素及其代表。 The
 following code, which we add into `avgord.g`, reads into GAP and redefines
 `AvgOrdOfGroup` without any syntax errors:
 
@@ -148,91 +148,91 @@ AvgOrdOfGroup := function(G)
 local cc, sum, c;
 cc:=ConjugacyClasses(G);
 sum:=0;
-for c in cc do
-  sum := sum + Order( Representative(c) ) * Size(cc);
+cc do
+  ump:= 和 + Order( Representative) * Size(cc);
 od;
 return sum/Size(G);
-end;
+end
 ```
 
-but when we run the test, here comes a surprise!
+但当我们运行测试时，这会令人吃惊！
 
 ```gap
-Read("avgord.g");
-Test("avgord.tst");
+读取("avgord.g");
+测试("avgord.tst");
 ```
 
 ```output
-########> Diff in avgord.tst, line 6:
-# Input is:
-AvgOrdOfGroup(S);
-# Expected output:
+########> Avgord中的Diff st, 第 6 行:
+# 输入:
+AvgOrdOfGroup(S)；
+# 预期输出：
 3291487/362880
-# But found:
+# 但发现：
 11/672
 ########
-########> Diff in avgord.tst, line 12:
-# Input is:
-AvgOrdOfGroup(D);
-# Expected output:
+##########> 相差于avgord。 St, 第12行：
+# 输入为：
+AvgOrdOfGroup(D)；
+# 预期的输出：
 44203/512
-# But found:
+# 但发现：
 2862481/512
-########
-########> Diff in avgord.tst, line 23:
-# Input is:
-AvgOrdOfGroup(G);
-# Expected output:
+######
+##########> 不同于avgord。 st, 第 23行：
+# 输入：
+AvgOrdOfGroup(G)；
+# 预期的输出：
 59/16
-# But found:
+# 但发现：
 189/16
 ########
-########> Diff in avgord.tst, line 29:
-# Input is:
-AvgOrdOfGroup(SL(2,5));
-# Expected output:
+##########> 严重情况下的Diff。 St, 第 29行：
+# 输入：
+AvgOrdOfGroup(SL(2.5))；
+# 预期输出：
 221/40
-# But found:
+# 但发现：
 69/20
-########
+#######
 false
 ```
 
-Indeed, we made a typo (deliberately) and replaced `Size(c)` by `Size(cc)`.
-The correct version of course should look as follows:
+事实上，我们打了一种打字（故意），将“Size(c)”改为“Size(cc)”。
+正确的版本当然应该如下所示：
 
 ```gap
 AvgOrdOfGroup := function(G)
 local cc, sum, c;
 cc:=ConjugacyClasses(G);
 sum:=0;
-for c in cc do
-  sum := sum + Order( Representative(c) ) * Size(c);
+cc do
+  summary:= sum + Order( Representative) * Size(c);
 od;
 return sum/Size(G);
-end;
+end
 ```
 
-Now we will fix this in `avgord.g`, and read and test it again to check that
-the tests run correctly.
+现在我们将在 `avgord.g` 中修复这个问题，并再次阅读和测试它以检查
+测试是否正常。
 
 ```gap
-Read("avgord.g");
-Test("avgord.tst");
+读取("avgord.g");
+测试("avgord.tst");
 ```
 
 ```output
 true
 ```
 
-Thus, the approach 'Make it right, then make it fast' helped detect a bug
-immediately after it has been introduced.
+因此，方法“使它正确，然后使它更快”帮助在引入后立即检测到一个 bug
+。
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- It is easy to create a test file by copying and pasting a GAP session.
-- Writing a good and comprehensive test suite requires some effort.
-- Make it right, then make it fast!
+- 通过复制和粘贴GAP会话来创建测试文件是容易的。
+- 编写一套良好和全面的试验套件需要作出一些努力。
+- 把它变得对了，然后让它变得更快！
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
