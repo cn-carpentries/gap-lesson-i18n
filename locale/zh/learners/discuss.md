@@ -1,18 +1,17 @@
 ---
-title: Discussion
-permalink: /discuss/
+title: 讨论情况
+permalink: /discusses/
 ---
 
-## Ten hints for GAP beginners
+## GAP初学者的10个提示
 
-1. **Remember that GAP is case-sensitive!** That means that `ABC`, `Abc` and `abc`
-  are three different identifiers. A call to `SymmetricGroup(3)` works, but
-  `Symmetricgroup(3)` will cause an error.
+1. **请记住，GAP是区分大小写的！** 这意味着`ABC`、`Abc`和`abc`
+  是三种不同的标识符。 调用`SymmetricGroup(3)` 工作, 但
+  `Symmetricgroup(3)` 会导致错误。
 
-2. An error message **`"Error, Variable: 'FuncName' must have a value"`** in a
-  function call usually points to a typo in the function name (see the previous hint),
-  or to some package that must be loaded in advance using
-  [**`LoadPackage`**](https://docs.gap-system.org/doc/ref/chap76.html#X79B373A77B29D1F5).
+2. 错误消息 **`错误， 变量: '函数名称' 必须有一个值"** 在
+    函数调用中通常指向函数名称中的输入(见前一个提示),
+    或一些必须预先使用 [**`LoadPackage\`**](https://docs.gap-system.org/doc/ref/chap76.html#X79B373A77B29D1F5 ]加载的软件包。
 
 3. **Do not hesitate to use longer and more informative variable names where
   appropriate.** For example, `x` looks perfectly suitable for `List([1..10], x -> x^2)`,
@@ -22,12 +21,12 @@ permalink: /discuss/
 4. **Use command line editing:** scroll the history of commands and navigate within
   the command line using arrow keys to edit it.
 
-5. **Use autocompletion instead of typing names of functions and variables in full.**
-  Type the initial part of the identifier and then press `<Tab>`. It will be
-  completed if its unique completion is possible. If not, you may press `<Tab>`
-  again to see all possible suggestions.
+5. \*\*使用自动补全而不是输入函数和变量的全名。 \*
+  输入标识符的初始部分，然后按下 "<Tab>"。 如果它能够完成独特的完成，它将是
+  。 如果没有，您可以再次按下<Tab>
+  查看所有可能的建议。
 
-6. **To view help pages, use `?` and `??` commands**. This will search not only
+6. **要查看帮助页面，请使用 `?` 和 `?` 命令**。 This will search not only
   in the GAP manuals, but also in the manuals of all GAP packages available
   in your GAP installation.
 
@@ -35,31 +34,30 @@ permalink: /discuss/
   [**`SetHelpViewer`**](https://docs.gap-system.org/doc/ref/chap2.html#X87C1BFB2826488B0)
   to view it with your preferred browser.
 
-8. **Use [**`LogTo`**](https://docs.gap-system.org/doc/ref/chap9.html#X79813A6686894960)
-  to save all GAP input and output into a text file.** It should be called before
-  calculations, not after!
+8. \*\*使用 [**`LogTo`**](https://docs.gap-system.org/doc/ref/chap9.html#X79813A6686894960)
+  将所有 GAP 输入和输出保存到文本文件中。\*\*它应该在
+  计算之前而不是之后调用！
 
-9. **If the calculation takes too long, press `<Control>-C` to interrupt it**.
-  Then type quit; to leave the break loop.
+9. **如果计算需要太长时间，按下 `<Control>-C` 来中断它**。
+  然后输入退出；离开休息循环。
 
-10. **Read [A First Session with GAP](https://docs.gap-system.org/doc/tut/chap2.html)**
-  from the GAP Tutorial.
+10. **从 GAP 教程读取[与GAP一起的第一次会话](https://docs.gap-system.org/doc/tut/chap2.html)**
 
-## Writing programs in GAP
+## 在 GAP 写入程序
 
-- Use direct calculations in the command line for object exploration and prototyping,
-  then think how to organise your code to make it reusable.
+- 在命令行中直接计算对象勘探和原型，
+  然后考虑如何组织您的代码，使其可以重新使用。
 
-- Use [**`LogTo`**](https://docs.gap-system.org/doc/ref/chap9.html#X79813A6686894960)
-  to save inputs and outputs to a logfile which then you can edit in a text editor.
+- 使用 [**`LogTo`**](https://docs.gap-system.org/doc/ref/chap9.html#X79813A6686894960)
+  保存输入和输出到日志文件，然后您可以在文本编辑器中进行编辑。
 
-- Save code in text files and use
+- 在文本文件中保存代码并使用
   [**`Read`**](https://docs.gap-system.org/doc/ref/chap9.html#X8373AC6B7D5F9167)
-  to load them. Find some advanced text editor to edit these files.
+  加载它们。 查找一些高级文本编辑器来编辑这些文件。
 
-- Make your code modular and reusable by organising it into functions.
+- 将你的代码模块组织成函数并可复用。
 
-- Write comments in the code – this will help you when you will return to it after a while.
+- 在代码中写下评论 - 这将有助于您在一段时间后返回它。
 
 - Understand [break loops](https://docs.gap-system.org/doc/ref/chap6.html#X8593B49F8705B486):
   you may [explore variables](https://docs.gap-system.org/doc/ref/chap6.html#X7EE5CF2C8419F061)
@@ -71,76 +69,76 @@ permalink: /discuss/
   to customise GAP, for example, to set help viewer to HTML or to make command line history available
   after quitting GAP in the next GAP session.
 
-- Understand the theory behind calculations: theoretical improvements could improve
-  the performance much more than highly optimised code which still does a brute-force calculation.
+- 理解计算背后的理论：理论上的改进可以提高
+  的性能，远远超过仍在进行暴力计算的高度优化的代码。
 
-- Implementing algorithms, do not forget corner cases. For example, does the implementation
-  work on a trivial group or an identity element?
+- 实现算法，不要忘记角子案例。 例如，实现
+  是一个微不足道的组还是一个身份元素？
 
-- Do not rely that GAP functions return results in a particular order, unless this
-  is documented. For example, dependently on the method, it may be not guaranteed
+- 不要依赖GAP函数返回结果的特定顺序，除非此
+  有文件记录。 For example, dependently on the method, it may be not guaranteed
   that conjugacy classes or irreducible characters are listed in some particular
   order, or that the first element in their list is the conjugacy class of an identity
   element or the trivial character.
 
-- Don't ask for more than you need as this may have performance implications.
-  For example:
+- 不要再询问，因为这可能涉及性能问题。
+  例如：
 
-  - If the property is an invariant of a conjugacy class (of elements or of
-    subgroups), you may be interested only at looking at the representatives
-    of conjugacy classes.
+  - 如果该财产是（元素或
+    子群组的）婚姻类的不变财产， 你可能只想看一看婚姻类的代表
+    。
 
-  - If you are interested in a list of elements of a collection, without a
-    particular order, use `AsList` instead of `AsSSortedList`.
+  - 如果您对一个收藏的元素列表感兴趣，没有一个
+    特定顺序，请使用 `AsList` 而不是 `AsSSortedList` 。
 
-  - Do not calculate conjugacy classes of all subgroups, if e.g. you are
-    interested only in normal or maximal subgroups - there are special
-    methods to compute them.
+  - 不计算所有子组的婚姻类，如果： 您是
+    只对普通或最大子组感兴趣——有特殊的
+    方法来计算它们。
 
   - If you are looking for _p_\-subgroups, first you may calculate
     a Sylow _p_\-subgroup of a group, and then look at its subgroups
     and their conjugates.
 
-  - Representation matters: it may be worth to convert a group from fp group
-    to an isomorphic pc group or a permutation group to use faster methods.
+  - 代表权事项：可能值得将一个组从fp group
+    转换为异构无主pc组或独占组，以使用更快的方法。
 
-- See [GAP Frequently Asked Questions](https://www.gap-system.org/faq/) for further hints.
+- [常见问题] (https://www.gap-system.org/faq/) 获取更多提示。
 
-## Stay in touch
+## 保持联系
 
-- Subscribe to the **[GAP Forum](https://www.gap-system.org/forum/)**.
+- 订阅\*\*[GAP论坛](https://www.gap-system.org/forum/)\*\*。
 
-- If you need help, choose among these three options, dependently on the question:
+- 如果您需要帮助，请在这三个选项中选择以下问题：
 
-  - ask questions in the [GAP Forum](https://www.gap-system.org/forum/)
+  - 在 [GAP 论坛](https://www.gap-system.org/forum/) 中提出问题
 
-  - send them to the [GAP Support](https://www.gap-system.org/issues/)
+  - 发送他们到 [GAP Support](https://www.gap-system.org/issues/)
 
-  - post them at the [Mathematics Q\&A site](https://math.stackexchange.com/questions/tagged/gap?sort=frequent&pageSize=50)
+  - 将它们发布在[数学问号\&A 站点](https://math.stackexchange.com/questions/tagged/gap?sort=frequent&pageSize=50)
 
-## Contributing to GAP
+## 为GAP贡献
 
 - If you think that you've found a bug: please
   [create an issue on GitHub](https://github.com/gap-system/gap/issues) or
   report it by email to [GAP Support](https://www.gap-system.org/issues/).
 
-- Please cite GAP if you use it. This helps for the community to grow,
-  and this will help you in return.
-  [This page](https://www.gap-system.org/cite/)
-  suggests how to cite GAP, and the function
+- 如果您使用GAP，请引用GAP。 这有助于社区增长，
+  ，这将有助于您的回报。
+  [此页面](https://www.gap-system.org/cite/)
+  建议如何引用GAP。 和函数
   [**`Cite`**](https://docs.gap-system.org/doc/ref/chap76.html#X79637D9A7B1AD7F7)
-  will help to generate citation sample for precisely the same version of GAP that is used.
+  将有助于为所使用的 GAP 同一版本生成引文样本。
 
-- Consider sharing your GAP developments with others, from sharing your code by
-  available means to organising it into a GAP package, submitted for the redistribution
-  with GAP and optionally for the refereeing.
+- 考虑与其他人分享您的 GAP 发展动态，从通过
+  分享您的代码到将它组织成一个 GAP 包。 已提交用于重新分配
+  并可选择用于重置。
 
-- Contribute to the further development of this lesson itself.
+- 有助于进一步发展这一经验教训。
 
-## Tips and tricks
+## 提示和方法
 
-- This is a simples approach to call GAP from a shell script. Create the shell
-  script called `check-one-order.sh` with the following content:
+- 这是从 shell 脚本调用GAP 的简单方法。 创建名为 `check-one-order.sh` 的 shell
+  脚本，包含以下内容：
 
 ```gap
 #!/bin/sh
@@ -151,59 +149,59 @@ quit;
 EOI
 ```
 
-and make it executable using `chmod u+x check-one-order.sh`. Now you may call
-it as follows:
+并使用`chmod u+x check-on-order.sh`来执行它。 现在你可以调用
+，如下所示：
 
 ```gap
-$ ./check-one-order.sh 24
+$./检查一个订单.sh 24
 ```
 
 ```output
-fail
+失败
 ```
 
 ```gap
-$ ./check-one-order.sh 105
+$ ./chec-on-order.sh 105
 ```
 
 ```output
 [ 105, 1 ]
 ```
 
-- Reading data files
+- 读取数据文件
 
-GAP can read any valid GAP input from the code using `Read`. The contents will
+GAP可以使用 "Read" 从代码中读取任何有效的 GAP 输入。 The contents will
 be read and evaluated in the main read-evaluate-print loop, but the results will
-not printed. Sometimes you may want to read the content of the file as a function
-and return that function - for that purpose you may find `ReadAsFunction` useful.
+not printed. 有时你可能想要将文件内容作为一个函数
+并返回这个函数 - 为此目的，你可能发现`ReadAsFunction`是有用的。
 But what to do if you have some a data file coming from other source, and it is
-not a valid GAP input? Sometimes you may have control over the tool that exports
-data, and may be able to tweak it to generate GAP input file. But where to look
+not a valid GAP input? 有时，您可能会控制导出
+数据的工具，并且可能会调整它以生成 GAP 输入文件。 But where to look
 if this option is not possible?
 
 `ReadCSV( filename[, nohead][, separator] )` reads a file in a CSV (comma
 separated values) format and returns its entries as a list of records
 (see [documentation](https://docs.gap-system.org/doc/ref/chap10.html#X848DD7DC79363341)).
-The entries of the first line of the file will be used for the names
-of the record components (blanks will be translated into underscores).
-One could also indicate that the first line contains data instead of
-field names, and also specify a custom separator. Conversely, `PrintCSV`
-may be used to output CSV files.
+文件第一行的条目将用于记录组件的名称
+(空白将被翻译成下划线)。
+还可以指出第一行包含数据而不是
+字段名，并且指定了一个自定义分隔符。 反之，`PrintCSV`
+可能用于输出 CSV 文件。
 
-To read arbitrary (binary or text) files as strings, use the `StringFile`
-function provided by the GAPDoc package (see
-[documentation](https://docs.gap-system.org/pkg/gapdoc/doc/chap6.html#X7E14D32181FBC3C3)).
-It will return the content of the file as a string.
-After that, you may use various string manipulation tools (see
-[Strings and Characters](https://docs.gap-system.org/doc/ref/chap27.html)
-in the GAP reference manual) to process it in the way you need. GAPDoc package
+若要以字符串读取任意(二进制或文本)文件，请使用 GAPDoc 包提供的 `StringFile`
+函数(见
+[documentation](https://docs.gap-system.org/pkg/gapdoc/doc/chap6.html#X7E14D32181FBC3C3))。
+它将返回作为字符串的文件内容。
+在此之后， 您可以使用各种字符串操纵工具(见
+[字符串和字符](https://docs.gap-system.org/doc/ref/chap27.html)
+在 GAP 参考手册中以您需要的方式处理它。 GAPDoc package
 also provides the `FileString` function which writes the content of a string
 into a file.
 
-If you need to organise reading/writing line by line, instead of reading or
-writing the whole file/string at once, we suggest to look at the functionality
-provided by the IO package
-(see [documentation](https://docs.gap-system.org/pkg/io/doc/chap4.html)),
-in particular at `IO_ReadLine` and `IO_WriteLine`.
+如果您需要通过行来组织读/写，而不是读或
+来一次写整个文件/字符串， 我们建议查看IO 包
+提供的功能
+(见 [documentation](https://docs.gap-system.org/pkg/io/doc/chap4.html)) 。
+特别是在`IO_ReadLine`和`IO_WriteLine`中。
 
 
