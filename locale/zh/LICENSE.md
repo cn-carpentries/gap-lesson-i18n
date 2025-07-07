@@ -1,48 +1,48 @@
 ---
-title: "Licenses"
+title: "许可协议"
 ---
 
-## Instructional Material
+## 教学材料
 
-All Carpentries (Software Carpentry, Data Carpentry, and Library Carpentry)
-instructional material is made available under the [Creative Commons
-Attribution license][cc-by-human]. The following is a human-readable summary of
-(and not a substitute for) the [full legal text of the CC BY 4.0
-license][cc-by-legal].
+所有 Carpentries (软件木工、数据木工和图书馆木工)
+教学材料可在 [知识共享
+署名许可][cc-by-human] 下提供。 以下是人类可读的
+摘要(而不是替代) [CC BY 4的完整法律文本。
+许可][cc-by-legal]
 
-You are free:
+您是免费的：
 
-- to **Share**---copy and redistribute the material in any medium or format
-- to **Adapt**---remix, transform, and build upon the material
+- **分享**---复制并以任何介质或格式重新分发材料
+- **Adapt**---remix, 转换并建立在材料上
 
-for any purpose, even commercially.
+为任何目的，甚至商业目的。
 
-The licensor cannot revoke these freedoms as long as you follow the license
-terms.
+只要您遵循许可证
+条款，许可权人就不能撤销这些自由。
 
-Under the following terms:
+根据以下条款：
 
-- **Attribution**---You must give appropriate credit (mentioning that your work
-  is derived from work that is Copyright (c) The Carpentries and, where
-  practical, linking to \<https\://carpentries.org/>), provide a [link to the
-  license][cc-by-human], and indicate if changes were made. You may do so in
-  any reasonable manner, but not in any way that suggests the licensor endorses
-  you or your use.
+- **Attributtion**---你必须给出适当的信用点数(提到你的作品
+  来自版权作品(c) Carpentries 和 其中
+  实用，链接到 \<https\://carpentries.org/>), 提供[链接到
+  许可][cc-by-human]并说明是否做了修改。 您可以使用
+  的任何合理方式这样做，但绝不意味着许可人认可您的
+  或者您的使用。
 
-- **No additional restrictions**---You may not apply legal terms or
-  technological measures that legally restrict others from doing anything the
-  license permits.  With the understanding that:
+- **没有额外的限制**---你不能适用法律条款或
+  技术措施，从法律上限制他人做任何
+  许可的事情。  但有一项谅解：
 
-Notices:
+通知：
 
-- You do not have to comply with the license for elements of the material in
-  the public domain or where your use is permitted by an applicable exception
-  or limitation.
-- No warranties are given. The license may not give you all of the permissions
-  necessary for your intended use. For example, other rights such as publicity,
-  privacy, or moral rights may limit how you use the material.
+- 您不必遵守公共域名中的
+  元素的许可，或者您的使用被适用的异常
+  或限制。
+- 没有提供担保。 许可证可能不会赋予您所有用于预定用途所需的权限
+  。 例如，其他权利如公示、
+  隐私或道德权利可能会限制您如何使用材料。
 
-## Software
+## 软件
 
 Except where otherwise noted, the example programs and other software provided
 by The Carpentries are made available under the [OSI][osi]-approved [MIT
@@ -55,8 +55,8 @@ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
 of the Software, and to permit persons to whom the Software is furnished to do
 so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+上述版权通知和此许可通知必须包含在所有的
+副本或软件的大部分中。
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -66,14 +66,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## Trademark
+## 商标：
 
-"The Carpentries", "Software Carpentry", "Data Carpentry", and "Library
-Carpentry" and their respective logos are registered trademarks of [Community
-Initiatives][ci].
+"Carpentries", "Software Carpentry", "Data Carpentry", and "Library
+Carpentry"及其各自的标志都是[Community
+Initiatives][ci] 的注册商标。
 
-[cc-by-human]: https://creativecommons.org/licenses/by/4.0/
-[cc-by-legal]: https://creativecommons.org/licenses/by/4.0/legalcode
+[cc-by-human]: https://cretivecommons.org/licenses/by/4.0/
+[cc-by-legal]: https://cretivecommons.org/licenses/by/4.0/legalcode
 [mit-license]: https://opensource.org/licenses/mit-license.html
 [ci]: https://communityin.org/
 [osi]: https://opensource.org
