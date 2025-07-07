@@ -1,8 +1,8 @@
 ---
-title: "Licenses"
+title: "Ліцензії"
 ---
 
-## Instructional Material
+## Інструкція
 
 All Carpentries (Software Carpentry, Data Carpentry, and Library Carpentry)
 instructional material is made available under the [Creative Commons
@@ -10,17 +10,17 @@ Attribution license][cc-by-human]. The following is a human-readable summary of
 (and not a substitute for) the [full legal text of the CC BY 4.0
 license][cc-by-legal].
 
-You are free:
+Ви вільні:
 
-- to **Share**---copy and redistribute the material in any medium or format
-- to **Adapt**---remix, transform, and build upon the material
+- до **Поділитися**-copy та перепоширювати матеріал у будь-якому середовищі або форматі
+- до **Адапт**---remix, форми та зводити до матеріалу
 
-for any purpose, even commercially.
+для будь-якої мети, навіть комерційно.
 
 The licensor cannot revoke these freedoms as long as you follow the license
 terms.
 
-Under the following terms:
+Згідно з наступними умовами:
 
 - **Attribution**---You must give appropriate credit (mentioning that your work
   is derived from work that is Copyright (c) The Carpentries and, where
@@ -31,18 +31,18 @@ Under the following terms:
 
 - **No additional restrictions**---You may not apply legal terms or
   technological measures that legally restrict others from doing anything the
-  license permits.  With the understanding that:
+  license permits.  З розумінням цього:
 
-Notices:
+Примітки:
 
 - You do not have to comply with the license for elements of the material in
   the public domain or where your use is permitted by an applicable exception
   or limitation.
-- No warranties are given. The license may not give you all of the permissions
-  necessary for your intended use. For example, other rights such as publicity,
-  privacy, or moral rights may limit how you use the material.
+- Гарантії не дано. Ліцензія може не надавати Вам усі необхідні дозволи
+  для вашого призначення. Наприклад, інші права, такі як публічність,
+  приватність або моральні права, можуть обмежувати використання матеріалу.
 
-## Software
+## Програмне забезпечення
 
 Except where otherwise noted, the example programs and other software provided
 by The Carpentries are made available under the [OSI][osi]-approved [MIT
@@ -66,7 +66,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## Trademark
+## Торгова марка
 
 "The Carpentries", "Software Carpentry", "Data Carpentry", and "Library
 Carpentry" and their respective logos are registered trademarks of [Community
