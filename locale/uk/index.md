@@ -1,5 +1,5 @@
 ---
-site: sandpaper::sandpaper_site
+site: канальний папір::sandpaper_site
 ---
 
 [GAP](https://www.gap-system.org) is a system for discrete computational algebra,
@@ -9,33 +9,33 @@ algorithms written in the GAP language as well as large data libraries of algebr
 objects, for example the [Small Groups Library](https://gap-packages.github.io/smallgrp/)
 which contains, among others, all 423 164 062 groups of order at most 2000 except 1024.
 
-This lesson gives an introduction to GAP. It is centred around a common task of
-searching in the Small Groups Library for interesting examples and counterexamples,
-and a particular research problem in which we will be interested is to **find
-examples of non-trivial groups such that the average order of their elements is an integer**.
+Цей урок дає вступ до GAP. Він зосереджений навколо загального завдання
+пошуку в бібліотеці дрібних груп для цікавих прикладів і підприкладів,
+та конкретна проблема дослідження, в якій ми будемо зацікавлені - це \*\*знайти
+приклади нетривіальних груп, так що середній порядок їх елементів є цілим числом \*\*.
 
 The lesson will lead the learner along the path from working in the GAP command
 line and exploring algebraic objects interactively to saving the GAP code into
 files, creating functions and regression tests, and further to performing
 comprehensive search and extending the system by adding new attributes.
 
-On this path, the learner will become familiar with:
+По цьому шляху учень стане знайомий з:
 
-- basic constructions of the GAP programming language,
+- базові конструкції мови програмування GAP,
 
-- ways to find necessary information in the GAP system, and
+- способи пошуку необхідної інформації в системі GAP та
 
-- good design practices to organise GAP code into complex programs.
+- хороші практики проектування коду GAP у складних програмах.
 
 ::::::::::::::::::::::::::::::::::::::::::  prereq
 
-## Prerequisites
+## Передумови
 
 The lesson is oriented on learners possessing the minimal theoretical
 background (at least at the level of an undergraduate group theory course)
 and willing to learn how concepts from abstract algebra may be
 explored using computational tools.
-No previous experience of working with GAP is required.
+Необхідний попередній досвід роботи з GAP.
 
 Learners only need to understand the concepts of files and directories
 (including home and working directories) and know how to start GAP.
@@ -44,26 +44,26 @@ Learners only need to understand the concepts of files and directories
 
 :::::::::::::::::::::::::::::::::::::::  checklist
 
-## Getting ready
+## Приготуватися
 
-1. In your home directory, create a new directory called `avgord`.
-2. Start GAP:
+1. У домашньому каталозі створіть новий каталог під назвою "avgord".
+2. Запустити GAP:
 
-- on Linux and macOS, open the terminal and call `path-to-your-gap-installation/gap-4.X.Y/gap`
-  (edit the path as necessary);
+- для Linux і macOS, відкрийте термінал і викличте `path-to-your-gap-installation/gap-4.X.Y/gap`
+  (редагувати шлях, як необхідний);
 - on Windows, start GAP using the Start menu or a desktop shortcut
   created after GAP installation.
 
-3. Set your current directory to `avgord`:
+3. Встановіть поточний каталог в `avgord`:
 
 - on Linux and macOS, call `ChangeDirectoryCurrent("/Users/username/avgord");`
   (edit the path as necessary; remember to type the full path to your home
   directory instead of `~`).
-- on Windows, call `ChangeDirectoryCurrent("C:/Users/username/avgord");`
-  (edit the path as necessary; remember to use `/` instead of `\`);
+- для Windows, викличте `ChangeDirectoryCurrent("C:/Users/username/avgord");`
+  (редагувати шлях, як це необхідно; не забудьте використовувати `/` замість `\`);
 
-4. Verify that your current directory is set up properly: call `DirectoryCurrent();`
-  and check that the path in the output points to the `avgord` directory.
+4. Переконайтеся, що ваш поточний каталог налаштовано правильно: виклик `DirectoryCurrent();`
+  і перевірте, що шлях у вихідних точках розташований у каталозі `avgord`.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
