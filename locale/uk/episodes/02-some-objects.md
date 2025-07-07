@@ -6,33 +6,33 @@ exercises: 5
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- See examples of types that are built-in in GAP but may be missing in other systems
-- See examples of list arithmetic
+- Дивіться приклади типів, які вбудовані в GAP, але можуть бути відсутні в інших системах
+- Подивитися приклади арифметики
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- Further examples of objects and operations with them
+- Подальші приклади об'єктів та операцій з ними
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-So far we have met three types of GAP types:
+Поки ми виконали три типи типів GAP:
 
-- simple objects such as integers, rationals, booleans, permutations;
+- прості об'єкти, такі як цілі числа, раціональні числа, булеви, перестановки;
 
-- composite objects such as _lists_;
+- складені об'єкти, такі як _списки_;
 
-- objects with more complex internal representation, such as groups.
+- об'єкти з більш складним внутрішнім представленням, такі як групи.
 
 In this section, we will demonstrate some other examples of basic objects
 that exist in GAP (the system is extendable, so one can introduce new types
 of objects, but this is beyond the scope of this lesson!).
 
-Some other simple objects are floats, cyclotomics and finite field elements:
+Деякі інші прості об'єкти є плаваючими, лотомікою і скінченними полями елементи:
 
 ```gap
-1.15; Float(1232/3456567);
+1.15; Float(1233456567);
 ```
 
 ```output
@@ -60,21 +60,21 @@ Z(5)
 Z(5)^0
 ```
 
-You already know about lists.
-Another type of composite objects is **records**. While a list contains subobjects indexed
-by their positions in the list, a record contains subobjects, called _record
-components_, which are indexed by their names. Elements of a record are accessed with `.`
+Ви вже знаєте про списки.
+Інший тип складених об'єктів - **записи**. У той час як список містить дані підоб’єктів, індексовані
+за їх позиціями у списку, запис містить вкладені об’єкти, які називаються компонентами \*запис
+, які індексуються їх іменами. Елементи запису доступні `.`
 
 ```gap
-date:= rec(year:= 2015, month:= "Nov", day:= 17);
+date:= rec(year:= 2015, month:= "Новинка", day:= 17);
 ```
 
 ```output
-rec( day := 17, month := "Nov", year := 2015 )
+rec( day := 17, місяць := "Новинка", рік := 2015, )
 ```
 
 ```gap
-date.year;
+дата.рік;
 ```
 
 ```output
@@ -86,16 +86,16 @@ date.time:= rec(hour:= 14, minute:= 55, second:= 12);
 ```
 
 ```output
-rec( hour := 14, minute := 55, second := 12 )
+ректо( година := 14, хвилина := 55, другий := 12)
 ```
 
 ```gap
-date;
+дата;
 ```
 
 ```output
-rec( day := 17, month := "Nov",
-  time := rec( hour := 14, minute := 55, second := 12 ), year := 2015 )
+rec( day := 17, місяць := "Новинка",
+  час := rec( година := 14, хвилину := 55, секунду := 12 ), рік := 2015
 ```
 
 ```gap
@@ -103,16 +103,15 @@ RecNames(date);
 ```
 
 ```output
-[ "time", "year", "month", "day" ]
+[ "час", "рік", "місяць", "день" ]
 ```
 
-Next, there are **strings** and **characters**. While strings are printed
+Далі, є **рядки** і **символи**. While strings are printed
 specially by GAP, a string is really just a list of characters, and any
-function which takes a list will also take a string. In contrast, characters
-are simple objects like integers.
+function which takes a list will also take a string. Навпаки, символи* це прості об’єкти, такі як цілі числа.
 
 ```gap
-gap> w:="supercalifragilisticexpialidocious"; Length(w);
+gap> w:="supercalifragilicexpialociidocious"; Length(w);
 ```
 
 ```output
@@ -120,10 +119,10 @@ gap> w:="supercalifragilisticexpialidocious"; Length(w);
 34
 ```
 
-Strings are denoted by double quotes, and characters by single ones.
+Рядки позначаються подвійними лапками, а символи по одиницях.
 
 ```gap
-gap> "s" in w; 's' in w; IsSubset(w,"s");  IsSubset(w,['s','f']); ['c','a','t'] = "cat";
+gap> "s" в w; 's' в w; IsSubset(w,"s"); IsSubset(w,['s','f']); ['c','a','t'] = "Кіт";
 ```
 
 ```output
@@ -131,10 +130,10 @@ false
 true
 true
 true
-true
+
 ```
 
-Note that
+Зауважте, що
 
 ```gap
 gap> PositionSublist(w,"sf"); PositionSublist(w,"fr");
@@ -145,8 +144,8 @@ fail
 10
 ```
 
-Be careful! Some operations may create a new list, while others are
-destructive. For example:
+Обережно! Деякі операції можуть створити новий список, а інші -
+руйнування. Наприклад:
 
 ```gap
 gap> SortedList(w); w;
@@ -157,58 +156,58 @@ gap> SortedList(w); w;
 "supercalifragilisticexpialidocious"
 ```
 
-but
+але
 
 ```gap
-gap> Sort(w); w;
+gap> Сорт(w); w;
 ```
 
 ```output
 "aaacccdeefgiiiiiiillloopprrssstuux"
 ```
 
-Which letter occurs in "supercalifragilisticexpialidocious" most often?
+Який лист найбільше зустрічається в "supercalifragilicexpialodidociy"
 
 ```gap
-gap> c := Collected(w);
+gap> c := зібрані (w);
 ```
 
 ```output
-[ [ 'a', 3 ], [ 'c', 3 ], [ 'd', 1 ], [ 'e', 2 ], [ 'f', 1 ], [ 'g', 1 ],
+[ 'a', 3 ], [ 'c', 3 ], [ 'd', 1 ], ['e', 2 ], [ 'f', 1 ], [ 'g', 1 ],
   [ 'i', 7 ], [ 'l', 3 ], [ 'o', 2 ], [ 'p', 2 ], [ 'r', 2 ], [ 's', 3 ],
-  [ 't', 1 ], [ 'u', 2 ], [ 'x', 1 ] ]
+  [ 't', 1 ], [ 'u', 2 ], [ 'x', 1 ]
 ```
 
 ```gap
-gap> k := Maximum( List( c, v -> v[2] ) ); Filtered( c, v -> v[2] = 7 );
+gap> k := Maximum( List( c, v -> v -> v[2] ) ); Filtered( c, v -> v[2] = 7 );
 ```
 
 ```output
 7
-[ [ 'i', 7 ] ]
+[ 'i', 7 ]
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Finding the most common letter(s) in a list using only one pass
+## Пошук найбільш розповсюджених літер у списку, використовуючи тільки один прохід
 
-The command
+Команда
 
-`k := Maximum( List( c, v -> v[2] ) ); Filtered( c, v -> v[2] = 7 );`
+`k := Maximum( список( c, v -> v[2] ) ); Filtered( c, v -> v[2] = 7 );`
 
 iterates over the list `c` twice (in `List` and in `Filtered`), and
 it also iterates over another list of the same length as `c` in the call
-to `Maximum`. If the list is long, this will impose certain performance
-and memory penalties. Try to write code that finds the letters that occur most
+to `Maximum`. Якщо список довгий, це покриє певну продуктивність
+та штрафи за пам'ять. Try to write code that finds the letters that occur most
 in `c` without producing an intermediate list.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- GAP has a plethora of various immediate, positional and component objects.
-- List arithmetic is very flexible and powerful.
-- Objects like lists and records are good to keep structured and related data.
+- GAP має вибірку різних негайних, позиційних та компонентів.
+- Список арифметик є дуже гнучким та потужним.
+- Такі об'єкти, як списки та записи, корисні для збереження структурованих та пов'язаних даних.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
