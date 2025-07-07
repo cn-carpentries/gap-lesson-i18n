@@ -1,65 +1,64 @@
 ---
-title: Discussion
+title: Обговорення
 permalink: /discuss/
 ---
 
-## Ten hints for GAP beginners
+## Десять гінтів для початківців GAP
 
-1. **Remember that GAP is case-sensitive!** That means that `ABC`, `Abc` and `abc`
-  are three different identifiers. A call to `SymmetricGroup(3)` works, but
-  `Symmetricgroup(3)` will cause an error.
+1. **Пам'ятайте, що GAP чутливий до регістру!** Це означає, що "ABC", "Abc" і "abc"* три різні ідентифікатори. Виклик на `SymmetricGroup(3)` працює, але
+    `Symmetricgroup(3)` викличе помилку.
 
 2. An error message **`"Error, Variable: 'FuncName' must have a value"`** in a
   function call usually points to a typo in the function name (see the previous hint),
   or to some package that must be loaded in advance using
   [**`LoadPackage`**](https://docs.gap-system.org/doc/ref/chap76.html#X79B373A77B29D1F5).
 
-3. **Do not hesitate to use longer and more informative variable names where
-  appropriate.** For example, `x` looks perfectly suitable for `List([1..10], x -> x^2)`,
-  while `ConClassesReps` may be more informative than just `x` for a list of
-  representatives of conjugacy classes of a group.
+3. \*\*Не вагатися у використанні довших і більш інформативних змінних, де
+  підходять. \* Наприклад, `x` абсолютно підходить для `Список ([1..10], x -> x^2)`,
+  , а `ConClassesReps` може бути більш інформативним, ніж просто `x` для списку
+  представників кон'югантних класів групи.
 
-4. **Use command line editing:** scroll the history of commands and navigate within
-  the command line using arrow keys to edit it.
+4. **Використовуйте редагування командного рядка:** прокрутіть історію команд і переміщайтеся всередині
+  командний рядок за допомогою клавіш зі стрілками для редагування.
 
-5. **Use autocompletion instead of typing names of functions and variables in full.**
-  Type the initial part of the identifier and then press `<Tab>`. It will be
+5. \*\*Використовувати автодоповнення замість введення назви функцій та змінних в повному обсязі. \*
+  Введіть початкову частину ідентифікатору, а потім натисніть `<Tab>`. It will be
   completed if its unique completion is possible. If not, you may press `<Tab>`
   again to see all possible suggestions.
 
-6. **To view help pages, use `?` and `??` commands**. This will search not only
+6. **Для перегляду сторінок довідки, використовуйте `?` та `?` команди**. This will search not only
   in the GAP manuals, but also in the manuals of all GAP packages available
   in your GAP installation.
 
-7. **Set default help format to HTML.** Use
+7. **Встановіть формат довідки за замовчуванням у HTML.** Використовуйте
   [**`SetHelpViewer`**](https://docs.gap-system.org/doc/ref/chap2.html#X87C1BFB2826488B0)
-  to view it with your preferred browser.
+  , щоб переглянути його в бажаному браузері.
 
 8. **Use [**`LogTo`**](https://docs.gap-system.org/doc/ref/chap9.html#X79813A6686894960)
   to save all GAP input and output into a text file.** It should be called before
   calculations, not after!
 
 9. **If the calculation takes too long, press `<Control>-C` to interrupt it**.
-  Then type quit; to leave the break loop.
+  Введіть наступне; для того, щоб залишити петлю зупинок.
 
-10. **Read [A First Session with GAP](https://docs.gap-system.org/doc/tut/chap2.html)**
-  from the GAP Tutorial.
+10. **Прочитайте [Перша сесія з GAP](https://docs.gap-system.org/doc/tut/chap2.html)**
+  з посібника GAP.
 
-## Writing programs in GAP
+## Письмо програми в GAP
 
-- Use direct calculations in the command line for object exploration and prototyping,
-  then think how to organise your code to make it reusable.
+- Використовуйте прямі розрахунки в командному рядку для розвідки та прототипізації об'єктів,
+  потім подумайте як організувати свій код, щоб він став знову придатним.
 
-- Use [**`LogTo`**](https://docs.gap-system.org/doc/ref/chap9.html#X79813A6686894960)
-  to save inputs and outputs to a logfile which then you can edit in a text editor.
+- Використовуйте [**`LogTo`**](https://docs.gap-system.org/doc/ref/chap9.html#X79813A6686894960)
+  для збереження даних і виходів до log-файлу, який потім ви можете редагувати в текстовому редакторі.
 
 - Save code in text files and use
   [**`Read`**](https://docs.gap-system.org/doc/ref/chap9.html#X8373AC6B7D5F9167)
-  to load them. Find some advanced text editor to edit these files.
+  to load them. Знайдіть якийсь розширений текстовий редактор для редагування цих файлів.
 
-- Make your code modular and reusable by organising it into functions.
+- Зробіть ваш код модульним та повторно придатним для використання, організувавши його у функціях.
 
-- Write comments in the code – this will help you when you will return to it after a while.
+- Пишіть коментарі в коді - це допоможе вам, коли ви повернетеся до нього через деякий час.
 
 - Understand [break loops](https://docs.gap-system.org/doc/ref/chap6.html#X8593B49F8705B486):
   you may [explore variables](https://docs.gap-system.org/doc/ref/chap6.html#X7EE5CF2C8419F061)
@@ -74,21 +73,21 @@ permalink: /discuss/
 - Understand the theory behind calculations: theoretical improvements could improve
   the performance much more than highly optimised code which still does a brute-force calculation.
 
-- Implementing algorithms, do not forget corner cases. For example, does the implementation
-  work on a trivial group or an identity element?
+- Реалізація алгоритмів не забувайте про кут справи. Наприклад, чи працює реалізація
+  для тривіальної групи чи елементу особи?
 
 - Do not rely that GAP functions return results in a particular order, unless this
-  is documented. For example, dependently on the method, it may be not guaranteed
-  that conjugacy classes or irreducible characters are listed in some particular
-  order, or that the first element in their list is the conjugacy class of an identity
-  element or the trivial character.
+  is documented. Наприклад, залежить від методу, можливо не гарантувати
+  перераховані класи кон'югації або незначні символи в одному замовленні
+  або що перший елемент у списку - це клас кон'югантності
+  елемента або тривіальний символ.
 
-- Don't ask for more than you need as this may have performance implications.
-  For example:
+- Не запитувати більше, ніж потрібно, оскільки це може мати наслідки для продуктивності.
+  Наприклад:
 
-  - If the property is an invariant of a conjugacy class (of elements or of
-    subgroups), you may be interested only at looking at the representatives
-    of conjugacy classes.
+  - Якщо властивість є інваріант класу кон'югації (елементів
+    підгрупи), вас може зацікавити тільки перегляд представників
+    занять кон'югатими.
 
   - If you are interested in a list of elements of a collection, without a
     particular order, use `AsList` instead of `AsSSortedList`.
@@ -97,35 +96,35 @@ permalink: /discuss/
     interested only in normal or maximal subgroups - there are special
     methods to compute them.
 
-  - If you are looking for _p_\-subgroups, first you may calculate
-    a Sylow _p_\-subgroup of a group, and then look at its subgroups
-    and their conjugates.
+  - Якщо ви шукаєте _p_\-підгрупи, спочатку можете обчислити
+    силову _p_\-підгрупу групи, а потім подивіться на їх підгрупи
+    та їх піджонати.
 
-  - Representation matters: it may be worth to convert a group from fp group
-    to an isomorphic pc group or a permutation group to use faster methods.
+  - Представлення мають значення: він може бути вартий перетворення групи з fp групи
+    в ізоморфну групу або групу прав для використання швидших методів.
 
-- See [GAP Frequently Asked Questions](https://www.gap-system.org/faq/) for further hints.
+- Переглядайте [GAP Frequently Asked Questions](https://www.gap-system.org/faq/) для подальших отримувачів.
 
-## Stay in touch
+## Залишайтеся на зв'язку
 
-- Subscribe to the **[GAP Forum](https://www.gap-system.org/forum/)**.
+- Підпишіться на **[Форум доступу GAP](https://www.gap-system.org/forum/)**.
 
-- If you need help, choose among these three options, dependently on the question:
+- Якщо вам потрібна допомога, оберіть один з цих трьох варіантів, залежно від питання:
 
   - ask questions in the [GAP Forum](https://www.gap-system.org/forum/)
 
   - send them to the [GAP Support](https://www.gap-system.org/issues/)
 
-  - post them at the [Mathematics Q\&A site](https://math.stackexchange.com/questions/tagged/gap?sort=frequent&pageSize=50)
+  - розміщувати їх у [математичний Q\&A сайті](https://math.stackexchange.com/questions/tagged/gap?sort=frequent&pageSize=50)
 
-## Contributing to GAP
+## Внесок у GAP
 
-- If you think that you've found a bug: please
-  [create an issue on GitHub](https://github.com/gap-system/gap/issues) or
-  report it by email to [GAP Support](https://www.gap-system.org/issues/).
+- Якщо ви думаєте, що ви знайшли помилку: будь ласка,
+  [створити проблему на GitHub](https://github.com/gap-system/gap/issuesчи
+  повідомлять про це електронною поштою в [підтримку GAP](https://www.gap-system.org/issues/).
 
-- Please cite GAP if you use it. This helps for the community to grow,
-  and this will help you in return.
+- Будь ласка, встановіть GAP, якщо ви його використовуєте. Це допоможе спільноті рости,
+  і це допоможе вам у зворотному напрямку.
   [This page](https://www.gap-system.org/cite/)
   suggests how to cite GAP, and the function
   [**`Cite`**](https://docs.gap-system.org/doc/ref/chap76.html#X79637D9A7B1AD7F7)
@@ -135,12 +134,12 @@ permalink: /discuss/
   available means to organising it into a GAP package, submitted for the redistribution
   with GAP and optionally for the refereeing.
 
-- Contribute to the further development of this lesson itself.
+- Зробити внесок у подальший розвиток самого цього уроку.
 
-## Tips and tricks
+## Поради та хитрощі
 
-- This is a simples approach to call GAP from a shell script. Create the shell
-  script called `check-one-order.sh` with the following content:
+- Це простий підхід до дзвінка GAP з shell сценарій. Створіть скрипт
+  під назвою `check-one-order.sh` з наступним змістом:
 
 ```gap
 #!/bin/sh
@@ -151,15 +150,15 @@ quit;
 EOI
 ```
 
-and make it executable using `chmod u+x check-one-order.sh`. Now you may call
+і зробіть його виконуваним за допомогою `chmod u+x check-one-order.sh`. Now you may call
 it as follows:
 
 ```gap
-$ ./check-one-order.sh 24
+$ ./контрольне одне замовлення 24
 ```
 
 ```output
-fail
+невдача
 ```
 
 ```gap
@@ -170,33 +169,33 @@ $ ./check-one-order.sh 105
 [ 105, 1 ]
 ```
 
-- Reading data files
+- Читання файлів даних
 
-GAP can read any valid GAP input from the code using `Read`. The contents will
+GAP може прочитати будь-які дійсні дані GAP з коду, використовуючи `Read`. The contents will
 be read and evaluated in the main read-evaluate-print loop, but the results will
-not printed. Sometimes you may want to read the content of the file as a function
-and return that function - for that purpose you may find `ReadAsFunction` useful.
-But what to do if you have some a data file coming from other source, and it is
-not a valid GAP input? Sometimes you may have control over the tool that exports
-data, and may be able to tweak it to generate GAP input file. But where to look
+not printed. Іноді може захотіти прочитати вміст файлу як функцію
+і повернути цю функцію - можна використати для цього типу `ReadAsFunction`.
+Але що робити, якщо у вас є деякі дані, які надходять з іншого джерела, і це
+не дійсне введення GAP? Іноді ви можете контролювати інструмент, який експортує
+дані і може мати можливість налаштувати їх для генерації файлу введення GAP. But where to look
 if this option is not possible?
 
-`ReadCSV( filename[, nohead][, separator] )` reads a file in a CSV (comma
-separated values) format and returns its entries as a list of records
-(see [documentation](https://docs.gap-system.org/doc/ref/chap10.html#X848DD7DC79363341)).
-The entries of the first line of the file will be used for the names
-of the record components (blanks will be translated into underscores).
-One could also indicate that the first line contains data instead of
-field names, and also specify a custom separator. Conversely, `PrintCSV`
-may be used to output CSV files.
+`ReadCSV( filename[, nohead][, розділювач ])` читає файл у форматі CSV (через кому
+і повертає його записи, як список записів
+(див. [documentation](https://docs.gap-system.org/doc/ref/chap10.html#X848DD7DC79363341)).
+Записи першого рядка файлу будуть використовуватися в іменах
+компонентів запису (ярлики будуть перекладені в підкреслення).
+Можна також вказати, що перший рядок містить дані замість
+імена полів та також вказано користувацький роздільник. І навпаки, `PrintCSV`
+може використовуватися для виводу файлів CSV.
 
 To read arbitrary (binary or text) files as strings, use the `StringFile`
 function provided by the GAPDoc package (see
 [documentation](https://docs.gap-system.org/pkg/gapdoc/doc/chap6.html#X7E14D32181FBC3C3)).
-It will return the content of the file as a string.
-After that, you may use various string manipulation tools (see
-[Strings and Characters](https://docs.gap-system.org/doc/ref/chap27.html)
-in the GAP reference manual) to process it in the way you need. GAPDoc package
+Це поверне вміст файлу як рядок.
+Після цього, ви можете використовувати різні інструменти керування рядками (див.
+[Рядки і символів](https://docs.gap-system.org/doc/ref/chap27.html)
+в посиланні на GAP вручну), щоб опрацювати це у потрібний вам спосіб. GAPDoc package
 also provides the `FileString` function which writes the content of a string
 into a file.
 
