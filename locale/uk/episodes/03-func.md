@@ -1,26 +1,26 @@
 ---
-title: Functions in GAP
+title: Функції в GAP
 teaching: 40
 exercises: 15
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Using command line for prototyping
-- Creating functions
-- Reading GAP code from a file
+- Використання командного рядка для прототипу
+- Створення функцій
+- Читання GAP коду з файлу
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- Functions as a way of code re-use
+- Функції як спосіб повторного використання коду
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Just to remind us of our task: for a finite group _G_, we would like to calculate
-the average order of its elements (that is, the sum of the orders of its elements
-divided by the order of the group).
+Нагадаємо нам про наше завдання: скінченну групу _G_, ми хотіли б обчислити
+середній порядок її елементів (тобто сума замовлень її елементів
+поділена на порядок групи).
 
 We begin with a very straightforward approach, iterating
 over all elements of the group in question:
@@ -42,8 +42,8 @@ sum:=0;
 ```
 
 ```gap
-for g in S do
-  sum := sum + Order(g);
+для g в S робити
+  сума := sum + Замовлення (g);
 od;
 sum/Size(S);
 ```
@@ -52,25 +52,25 @@ sum/Size(S);
 39020911/3628800
 ```
 
-Now assume that we would like to save this fragment of GAP code and later
-repeat this calculation for some other groups. We may even reformat it to fit
+Тепер припустимо, що ми хотіли б зберегти цей фрагмент коду GAP, а потім
+повторити це обчислення для деяких інших груп. We may even reformat it to fit
 it into one line and use a double semicolon to suppress the output of `sum`:
 
 ```gap
-sum:=0;; for g in S do sum := sum + Order(g); od; sum/Size(S);
+sum:=0;; для g в S сума := sum + замовлення(g); od; sum/Size(S);
 ```
 
 ```output
 39020911/3628800
 ```
 
-Now we may easily copy and paste it into the GAP session the next time we need it.
+Тепер ми можемо легко копіювати та вставити це до сеансу GAP наступного разу при потребі.
 But here we see the first inconvenience: the code expects that the group in question
 must be stored in a variable named `S`, so either we have to reset `S` each
 time, or we need to edit the code:
 
 ```gap
-S:=AlternatingGroup(10);
+S:=Альтернативна Група(10);
 ```
 
 ```output
@@ -78,7 +78,7 @@ Alt( [ 1 .. 10 ] )
 ```
 
 ```gap
-sum:=0;; for g in S do sum := sum + Order(g); od; sum/Size(S);
+sum:=0;; для g в S сума := sum + замовлення(g); od; sum/Size(S);
 ```
 
 ```output
@@ -87,14 +87,14 @@ sum:=0;; for g in S do sum := sum + Order(g); od; sum/Size(S);
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-## This works only for rapid prototyping
+## Це працює лише для швидкого створення прототипів
 
-- one could accidentally copy and paste only a part of the code, and
-  incomplete input may trigger a break loop;
-- even more dangerous: one could forget to reset `sum` to zero prior to the new
-  calculation and obtain incorrect results;
-- the group in question may have a different variable name, so the code will
-  have to be changed;
+- випадково копіювати і вставити тільки частину коду, а
+  неповне введення може викликати цикл перерви;
+- ще більше небезпеки: можна було забути скинути `sum` до нуля перед новим
+  розрахунок та отримати неправильні результати;
+- група, що ставиться під сумнів іншу назву змінної, так що код
+  повинен бути змінений;
 - **last, but not least:** when GAP code is pasted into the interpreter, it is evaluated line
   by line. If you have a long file with many commands, and a syntax error is
   in line _N_, this error will be reported only when GAP completes
@@ -105,35 +105,35 @@ sum:=0;; for g in S do sum := sum + Order(g); od; sum/Size(S);
 That is why we need to give our GAP code more structure by organising it
 into functions:
 
-- functions are parsed first and may be called later;
+- функції обробляються в першу чергу і можуть викликатись пізніше;
 - any **syntax** errors will be detected in the parsing stage, and not at the time
   of the call;
-- functions may have local variables, and this prevents them
-  being accidentally overwritten just because of reusing the same name of the
-  variable to store something else.
+- функції можуть мати локальні змінні, і це запобігає випадковому перезаписуванню їх
+  після повторного використання змінної
+  для зберігання чогось іншого.
 
-The following function takes an argument `G` and computes the average order
-of its elements:
+Ця функція приймає аргумент `G` і обчислює середній порядок
+його елементів:
 
 ```gap
 AvgOrdOfGroup := function(G)
-local sum, g;
-sum := 0;
-for g in G do
-  sum := sum + Order(g);
+локальна сума, g;
+сума := 0;
+для g in G do
+  sum := sum + замовлення(g);
 od;
 return sum/Size(G);
 end;
 ```
 
 ```output
-function( G ) ... end
+функція( Г) ... кінець
 ```
 
-Now we can apply it to another group, passing the group as an argument:
+Тепер ми можемо застосувати її до іншої групи, передавши групу в якості аргумента:
 
 ```gap
-A:=AlternatingGroup(10); AvgOrdOfGroup(A); time;
+A:=Альтернативні Group(10); AvgOrdOfGroup(A); час;
 ```
 
 ```output
@@ -149,9 +149,9 @@ Thus, we may now create new groups and reuse `AvgOrdOfGroup` to calculate the av
 order of their elements in the same GAP session. Our next goal is to make it
 reusable for calculations in future sessions.
 
-Using a text editor (for example, the one that you may have used for previous
-Software Carpentry lessons), create a text file called `avgord.g` containing
-the following function code and comments (a good chance to practise using them!):
+Використовуючи текстовий редактор (наприклад, той, який ви могли використовувати для попередніх
+програм Carpentry lesson), створити текстовий файл під назвою "avgord. \`, що містить
+наступний код функції і коментарі (хороший шанс практикуватися з використанням них!):
 
 ```gap
 #####################################################################
@@ -172,14 +172,14 @@ return sum/Size(G);
 end;
 ```
 
-Now start a new GAP session and create another group, for example `MathieuGroup(11)`:
+Тепер створіть новий сеанс GAP та створіть іншу групу, наприклад, `MathieuGroup(11)`:
 
 ```gap
 M11:=MathieuGroup(11);
 ```
 
 ```output
-Group([ (1,2,3,4,5,6,7,8,9,10,11), (3,7,11,8)(4,10,5,6) ])
+Група ([ (1,2,3,4,5,6,7,8,9,10,11), (3,7,11,8)(4,10,5,6)
 ```
 
 Clearly, `AvgOrdOfGroup` is not defined in this session, so an attempt to
@@ -190,15 +190,15 @@ AvgOrdOfGroup(M11);
 ```
 
 ```error
-Error, Variable: 'AvgOrdOfGroup' must have a value
-not in any function at line 2 of *stdin*
+Помилка, змінна: 'AvgOrdOfGroup' повинно мати значення
+у будь-якій функції на рядку 2 *stdin*
 ```
 
-To be available, it should first be loaded using the function `Read`. Below
+Для доступності, спершу потрібно завантажити за допомогою функції `Read`. Below
 we assume that the file is in the current directory, so no path is needed.
 
 ```gap
-Read("avgord.g");
+Читання ("avgord.g");
 ```
 
 This loads the file into GAP, and the function `AvgOrdOfGroup` is now
@@ -212,55 +212,55 @@ AvgOrdOfGroup(M11);
 53131/7920
 ```
 
-In this example of using `Read`, a new GAP session was started to make it clear
-that `AvgOrdOfGroup` did not exist before the call of `Read` and was loaded
-from the file. However, a file with a function like this could be read multiple
-times in the same GAP session (later you will see cases when re-reading a
-file is more complicated). Calling `Read` again executes all code in the file
-being read. This means that if the code of the function has been modified, and
+В цьому прикладі використання `Read`, нову сесію GAP було запущено, щоб очистити
+, що параметр `AvgOrdOfGroup` не існував до дзвінка `Read` і був завантажений
+з файлу. Проте, файл з такою функцією, як це, може бути прочитаний кілька
+в одному сеансі GAP (пізніше ви побачите випадки при повторному читанні файлу
+є більш складним). Виклик `Read` знову виконує весь код в файлі
+. This means that if the code of the function has been modified, and
 it has no errors (but possibly has warnings), the function will be
-overwritten. **Never ignore the warnings!**
+overwritten. **Ніколи не ігноруйте попередження!**
 
-For example, let us edit the file and replace the line
-
-```gap
-return sum/Size(G);
-```
-
-by the line with a deliberate syntax error:
+Наприклад, давайте змінимо файл і замінимо рядок
 
 ```gap
-return Float(sum/Size(G);
+сума повертає/Розмір(G);
 ```
 
-Now read this file with
+за лінією з уточненою помилкою синтаксису:
 
 ```gap
-Read("avgord.g");
+повернути Float(sum/Size(G);
 ```
 
-and you will see an error message:
+Прочитати файл допомогою
+
+```gap
+Читання ("avgord.g");
+```
+
+і ви побачите повідомлення про помилку:
 
 ```error
-Syntax error: ) expected in avgord.g line 7
-return Float(sum/Size(G);
-                        ^
+Синтаксична помилка: очікується в avgord.g рядок 7
+повертати Float(sum/Size(G);
+^
 ```
 
 Since there was an error, the `AvgOrdOfGroup` function in our session was not
 redefined, and remains the same as last time it was successfully read:
 
 ```gap
-Print(AvgOrdOfGroup);
+Друк (AvgOrdOfGroup);
 ```
 
 ```output
-function ( G )
-    for g  in G  do
-        sum := sum + Order( g );
+функція ( G )
+    для g in G сума
+        := sum + замовлення( g);
     od;
-    return sum / Size( G );
-end
+    return sum / Розмір ( G );
+кінець
 ```
 
 Now correct the error by adding the missing closing bracket,
@@ -275,7 +275,7 @@ AvgOrdOfGroup(M11);
 6.70846
 ```
 
-Now let's see an example of a _warning_. Since it is only a warning, it will
+Тепер давайте розглянемо приклад _попередження_. Since it is only a warning, it will
 redefine the function, and this may cause some unexpected result. To see what
 could happen, first edit the file to roll back the change in the type of the
 result (so it will return a rational instead of a float), and then comment
@@ -283,19 +283,19 @@ out two lines as follows:
 
 ```gap
 AvgOrdOfGroup := function(G)
-# local sum, g;
-# sum := 0;
-for g in G do
-  sum := sum + Order(g);
+# локальна сума, g;
+# сума:= 0;
+для g in G do
+  sum := sum + замовлення(g);
 od;
 return sum/Size(G);
 end;
 ```
 
-Now, when you read the file, you will see warnings:
+Тепер, коли ви прочитали файл, ви побачите попередження:
 
 ```gap
-Read("avgord.g");
+Читання ("avgord.g");
 ```
 
 ```error
@@ -313,10 +313,10 @@ return sum/Size(G);
           ^
 ```
 
-These warnings mean that because `g` and `sum` are not declared as `local`
-variables, GAP will expect them to be global variables at the time when
-the function will be called. Because they did not exist when `Read`
-was called, a warning was displayed. However, if they happened to exist
+Ці попередження означають, що оскільки `g` і `sum` не оголошені як `local`
+змінні, GAP очікує, що вони будуть глобальними змінними в той час, коли
+буде викликана функція. Оскільки після виклику `Read`
+вони не існували, було показано попередження. However, if they happened to exist
 by that time, there would be no warning, and any call to `AvgOrdOfGroup` would
 overwrite them! This shows how important it is to
 declare local variables. Let us investigate what happened in slightly
@@ -326,36 +326,36 @@ The function is now redefined, as we can see from its output (or can
 inspect with `PageSource(AvgOrdOfGroup)` which will also display any comments):
 
 ```gap
-Print(AvgOrdOfGroup);
+Друк (AvgOrdOfGroup);
 ```
 
 ```output
-function ( G )
-    for g in G  do
-        sum := sum + Order( g );
+функція ( G )
+    для g in G сума
+        := sum + замовлення( g);
     od;
-    return sum / Size( G );
-end
+    return sum / Розмір ( G );
+кінець
 ```
 
-but an attempt to run it results in a break loop:
+але спроба запустити його в результаті в циклі перери:
 
 ```gap
 AvgOrdOfGroup(M11);
 ```
 
 ```error
-Error, Variable: 'sum' must have an assigned value in
-  sum := sum + Order( g ); called from
+Помилка, Змінна : 'sum' повинна мати призначене значення в
+  sum := sum + замовлення( g ); дзвонимо з
 <function "AvgOrdOfGroup">( <arguments> )
- called from read-eval loop at line 24 of *stdin*
-you can 'return;' after assigning a value
+ викликано з циклу "читання-eval у рядку 24 *stdin*
+Ви можете "return; після призначення значення
 brk>
 ```
 
-which you can exit using `quit;`.
+що ви можете закрити, використовуючи `quit;`.
 
-What happens next demonstrates how things may go wrong:
+Далі ми демонструємо, як все може піти не так:
 
 ```gap
 sum:=2^64; g:=[1];
@@ -375,7 +375,7 @@ AvgOrdOfGroup(M11);
 ```
 
 ```gap
-sum; g;
+сума; г;
 ```
 
 ```output
@@ -389,10 +389,10 @@ you have initial version of `AvgOrdOfGroup` in the file `avgord.g` again:
 
 ```gap
 AvgOrdOfGroup := function(G)
-local sum, g;
-sum := 0;
-for g in G do
-  sum := sum + Order(g);
+локальна сума, g;
+сума := 0;
+для g in G do
+  sum := sum + замовлення(g);
 od;
 return sum/Size(G);
 end;
@@ -400,7 +400,7 @@ end;
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-## Paths
+## Шляхи
 
 - It is important to know how to specify paths to files in all operating
   systems and where to find your home and current directory.
@@ -412,9 +412,9 @@ end;
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Command line is good for prototyping; functions are good for repeated calculations.
-- Informative function names and comments will make code more readable to your future self and to others.
-- Beware of undeclared local variables!
+- Командний рядок підходить для прототипу; функції корисні для повторюваних розрахунків.
+- Інформаційні імена функцій та коментарі зроблять код більш читабельним для вашого майбутнього та для інших.
+- Остерігайтеся неоголошених місцевих змінних!
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
