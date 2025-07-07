@@ -1,51 +1,51 @@
 ---
-title: Instructor Notes
-permalink: /guide/
+title: Інформація інструктора
+permalink: /інструкція/
 ---
 
-## Overall
+## Усього
 
 - For the first lesson, good to have access to Windows (VM or remote desktop) to
   demonstrate some Windows-specific aspects of working with GAP.
 
-- Before start, check that everyone has installed GAP and knows how to start it.
-  Also remind that it's not advised to install in in the path with spaces, e.g. in
-  "My Documents".
+- Перед початком перевірте, чи всі встановили GAP та вміли його запускати.
+  Також нагадую, що йому не рекомендується встановлювати в шлях з пробілами, наприклад, в
+  "Мої документи".
 
-- It is important that learners will understand how to operate with files
-  located in different directories. `ChangeDirectoryCurrent` is the function
+- Важливо, щоб учні зрозуміли, як працювати з файлами
+  , розташованими в різних каталогах. `ChangeDirectoryCurrent` is the function
   from the IO package (requires compulation), which should be available if
   GAP is properly installed (i.e. installed following instructions for the
-  workshop). In case of any problems, the first step of troubleshooting is
-  to check whether `LoadPackage("io");` returns `fail`. If so, the remedy
-  for Windows users is to type full paths to files. Linux and macOS users
+  workshop). У разі будь-яких проблем, перший крок до виправлення неполадок
+  перевірити чи "LoadPackage("io");\` повертає "невдало". Якщо так, то виправити
+  для користувачів Windows - ввести повний шлях до файлів. Linux and macOS users
   are less affected as for the, the way how they should start GAP is to
   navigate to the needed directory in the Terminal and start GAP from there.
 
-- Help to adjust terminal settings, especially show to Windows users that they
-  can permanently change colours and fonts in mintty shell (the one started with
-  `gap.bat`).
+- Допомога у налаштуванні параметрів терміналу, особливо показувати користувачам Windows, які
+  можуть змінювати кольори і шрифти в mintty shell (та, яка починається з розриву
+  з прогалини. атт\`).
 
-- Explain how to copy and paste input and output (especially on Windows).
+- Поясніть, як копіювати, вставляти введення і вивід (особливо на Windows).
 
-- Explain how to read lesson pages: GAP input is types without GAP prompt.
-  GAP output is ion blue colour. Errors are displayed in red. GAP promts is
-  not displayed, unless this is really necessary (e.g. to demonstrate how the
-  multi-line input works).
+- Поясніть, як читати сторінки уроків. Вхід GAP є типом без рядка GAP.
+  Вивід GAP є синім кольором. Помилки відображаються червоним. Промоти GAP
+  не відображаються, якщо це не дійсно необхідно (наприклад, щоб продемонструвати, як працює багаторядковий введення
+  ).
 
-- It is important that instructor starts GAP with `-r` option to avoid
-  interfering with own GAP settings e.g. locally installed packages and
-  other content of `.gap` directory.
+- Важливо, що інструктор запускає GAP з опцією «-r», щоб уникнути
+  втручатися в власні параметри GAP. . локально встановлені пакунки та
+  інший вміст теки `.gap`.
 
-- To use color prompt when GAP is started with `-r` option to ignore all user
-  preferences, including this (if set), call `ColorPrompt(true);`.
+- Щоб використовувати кольоровий запит, коли GAP запущено опцією `-r`, щоб ігнорувати всі налаштування
+  , включаючи це (якщо встановлено), виклик `ColorPrompt(true);`.
 
-## [First session with GAP]({% link \_episodes/01-command-line.md %})
+## [Перша сесія з GAP]({% посилання \_епізоді/01-command-line.md %})
 
-- Emphasize that the banner contains version info useful for citing GAP or
-  reporting bugs. Selection of packages may differ, but missing **IO** and
-  **Browse** packages indicate that these and perhaps some other packages
-  that require compilation were not compiled.
+- Зберігайте те, що банер містить інформацію про версію для посилається на GAP чи
+  повідомлення про помилки. Вибір пакетів може відрізнятися, але відсутні **IO** та
+  **Брауз** пакети вказують на те, що ці та, можливо, деякі інші пакети
+  , які потребують компіляції, не були скомпілювані.
 
 - A second call to `LogTo("logfile");` will not open the new file but will report
   that GAP is already logging to another file. In this case, either ignore it if
@@ -57,17 +57,17 @@ permalink: /guide/
   also happens if e.g. some file has to be read or some package should be loaded
   to define the function.
 
-- Discuss why it's a bad practice to Google for the GAP manual instead of
-  using the GAP help system.
+- Обговоріть чому це погана практика Google для ручного використання GAP, а не
+  використання системи допомоги GAP.
 
-- Be aware that help selection screen will look differently if **Browse**
-  package is not compiled.
+- Майте на увазі, що екран допомоги при виборі буде виглядати інакше, якщо пакет **Браузер**
+  не буде скомпільовано.
 
-- Explain how to switch to view HTML version of the Manual with MathJax support.
+- Поясніть, як перемикатися на HTML версію вручну з підтримкою MathJax.
 
-- Draw attention to the difference between `AsList` and `AsSSortedList`.
+- Зверніть увагу на різницю між "AsList" і "AsSSortedList".
 
-- Help to call `WriteGapIniFile` and customise GAP e.g. to use browser as a
+- Допоможіть подзвонити `WriteGapIniFile` і налаштувати GAP, наприклад, використовувати браузер як
   viewer.
 
 - Demonstrating how to type `Sum( List( elts, Order ) ) / Length( elts );`
@@ -75,13 +75,13 @@ permalink: /guide/
   around the line, perhaps executing partial command to see their results,
   instead of typing the whole command from first to last character sequentially.
 
-- Use Etherpad to vote for approaches to calculate the average order of a list.
-  After that discuss situations when each of them may be more preferable than others.
+- Використовуйте Etherpad для голосування за підходи, щоб обчислити середній порядок списку.
+  Після цієї ситуації, коли кожен з них може бути кращим за інших.
 
-1. Solution of the challenge: `Filtered( elts, g -> 2^g = 2 );` and
+1. Розв'язання задачі: `Filtered( elts, g -> 2^g = 2 );` і
   `Filtered( elts, g -> (1,2)^g = (1,2) );`.
 
-## [Some more GAP objects]({% link \_episodes/02-some-objects.md %})
+## [Ще деякі інші об'єкти GAP]({% посилання \_епізоді/02-some-objects.md %})
 
 - Floats, cyclotomics, finite fields elements are not used further in the
   lesson, but we mention them briefly to show that they exist.
@@ -89,68 +89,68 @@ permalink: /guide/
 - Emphasize that organising complex objects into nested records may
   be more efficient than nested lists.
 
-- Beware that `w:="supercalifragilisticexpialidocious"; IsSubset(w,'s');`
-  results in a no-method-found error. This may be a good moment to introduce
+- Будьте обережні, що `w:="supercalifragilisticexpialidocious"; IsSubset(w,'s');`
+  призводить до помилки без методу. This may be a good moment to introduce
   this special kind of error messages.
 
 - For extending GAP with new types of objects, refer to
   [Creating New Objects](https://docs.gap-system.org/doc/ref/chap79.html)
   and [Examples of Extending the System](https://docs.gap-system.org/doc/ref/chap80.html)
   of the GAP Reference Manual.
-  Also, the [Circle package](https://gap-packages.github.io/circle/)
-  provides an example of extending GAP with new multiplicative objects.
+  Також, [пакет Серця](https://gap-packages.github.io/circle/)
+  надає приклад подовження GAP з новими мультиплікативними об'єктами.
 
-1. Solution of the challenge:
-  `r:=c[1]; for i in [2..Length(c)] do if c[i][2]>r[2] then r:=c[i]; fi; od; r;`
+1. Розв'язання виклику:
+  `r:=c[1]; для i в [2.. ength(c)] виконувати, якщо c[i][2]>r[2] потім r:=c[i]; fi; od; r;`
 
-## [Functions in GAP]({% link \_episodes/03-func.md %})
+## [Функції в GAP]({% посилання \_епізоді/03-func.md %})
 
-- Spend some time on the structure of the GAP function: keywords `function`,
-  `local`, `return`, `end`, and other language constructions exposed there.
+- Витрачайте деякий час на структуру функції GAP: ключові слова `функція`,
+  `local`, `return`, `end`, та інші конструкції мови, які там піддані.
 
-- Tell how to explore the break loop while showing an example of an error
-  message.
+- Скажіть як дослідити цикл перерви при відображенні прикладу з помилкою
+  повідомленням.
 
-## [Using regression tests]({% link \_episodes/01-command-line.md %})(04-testing.html)
+## [Використання регресійних тестів]({% link \_episodes/01-command-line.md %})(04-testing.html)
 
 - Learners may need help with formatting the test because of misplaced comments
   and/or different formatting of the output.
 
-- Cover aspects of making test files reproducible: random vs explicit examples,
-  suppressing output with double semicolon, etc.
+- Обкладинки створення тестових файлів репродукційно: випадкові vs явні приклади,
+  придушує вихід з подвійною крапкою з комою тощо.
 
-- Refer to other options of `Test` such as comparing the output up to
-  whitespaces, displaying the progress of the test, etc.
+- Зверніться до інших параметрів `Тесту`, таких як порівняння виводу до
+  пробілів, показуючи прогрес тесту і т.п.
 
-- Mention `TestDirectory` function to run a collection of tests.
+- Згадайте функцію `TestDirectory`, щоб запустити набір тестів.
 
-- Mention profiling and code coverage tools.
+- Загадка про профілювання та засоби покриття коду.
 
-## [Small groups search]({% link \_episodes/05-small-groups.md %})
+## [Пошук у невеликих групах]({% зв'язку \_епізодіз/05-small-groups.md %})
 
 - Give an overview of `SmallGroup`, `AllSmallGroups`, `NrSmallGroups` and
   `SmallGroupsInformation` with some examples.
 
-- Discuss, why iterating is better than AllSmallGroups exhausting memory
-  (mention the concept of self-learning objects).
+- Обговоріть про те, чому ітерації краще, ніж AllSmallGroups вичерпуючи пам'ять
+  (згадайте концепцію об'єктів самонавчання (описується).
 
 - A side question is how to convert a pc group, returned by `SmallGroup`, to
   some other representation, e.g. permutation or fp group.
 
-- Live coding is preferred way to teach how to develop most of the functions
-  from this lesson.
+- Живе кодування є кращим способом навчати більшості функцій
+  з цього уроку.
 
-1. Solution of the challenge:
-  `Sum(List(Filtered([1..2000], n -> not IsPrimePowerInt(n)),NrSmallGroups)); NrSmallGroups(1536); last2-last;`.
+1. Розв'язання задачі:
+  `Sum(List(Filtered([1..2000], n -> не IsPrimePowerInt(n),NrSmallGroups)); NrSmallGroups(1536); last;`.
   In addition to `SmallGroup(105,1)` and `SmallGroup(357,1)`, another
   group is `SmallGroup(1785,1)`.
 
-## [Attributes and Methods]({% link \_episodes/06-attributes.md %})
+## [Атрибути та методи]({% посилання \_епізоді/06-атрибути.md %})
 
-- Why it is not a good idea to declare `Random` as an attribute?
+- Чому не варто заявляти "Рендом" як атрибут?
 
-1. Ideas for the challenge: try `k:=1` and then `k:=k+1;n:=2^k;AvgOrdOfCollection(DihedralGroup(n));time;AvgOrdOfGroup(DihedralGroup(n));time;`.
-  Even for `k=20`, the 1st function takes about 15s and the 2nd - about 115s
-  on a MacBook Pro.
+1. Ідеї для завдання: спробуйте `k:=1` і потім `k:=k+1;n:=2^k;AvgOrdOfCollection(DihedralGroup(n);AvgOrdOfGroup(DihedralGroup(n);time;`.
+  Навіть для `k=20`, 1-ша функція займає близько 15s і 2-го - близько 115s
+  на MacBook Pro.
 
 
