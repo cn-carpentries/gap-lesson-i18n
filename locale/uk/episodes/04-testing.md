@@ -1,21 +1,21 @@
 ---
-title: Using regression tests
+title: Використовуються регресійні тести
 teaching: 40
 exercises: 10
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Be able to create and run test files
-- Understand how test discrepancies and runtime regressions can be identified and interpreted
-- Understand how to adjust tests to check randomised algorithms
-- Learn the 'Make it right, then make it fast' concept
+- Створення і запуск тестових файлів
+- Розумить, як можна визначити та інтерпретувати розбіжності та регресії стаціонару
+- Зрозумійте як налаштувати тести, щоб перевірити випадкові алгоритми
+- Дізнайтеся, як "Зроби це правильним, а потім зробити концепцію швидкого "
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- Test-driven development
+- Керована тестами розробка
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -23,9 +23,9 @@ The code of `AvgOrdOfGroup` is very simple, and nothing could possibly go wrong
 with it. By iterating over the group instead of creating a list of its elements,
 it avoids running out of memory
 (calling `AsList(SymmetricGroup(11))` already results in exceeding the permitted
-memory). That said, the computation still takes time, with several minutes
-needed to calculate the average order of an
-element of `SymmetricGroup(11)`. But at least we are confident that it is
+memory). Однак, обчислення все ще потребує часу, за декілька хвилин
+потрібно було обчислити середній порядок
+елемента `Симетричної групи (11)`. But at least we are confident that it is
 correct.
 
 Now we would like to write a better version of this function using some
@@ -37,7 +37,7 @@ use **regression testing**: this is the term for testing based on
 rerunning previously completed tests to check that new changes do not
 impact their correctness or worsen their performance.
 
-To start with, we need to create a **test file**. The test file looks
+Для початку нам потрібно створити **тестовий файл**. The test file looks
 exactly like a GAP session, so it is easy to create it by copying and
 pasting a GAP session with all GAP prompts, inputs and outputs into a
 text file (a test file could be also created from a log file with a
@@ -50,32 +50,32 @@ them with the extension `.tst`. Now create the file `avgord.tst` in the current 
 avoid typing the full path) with the following content:
 
 ```gap
-# tests for average order of a group element
+# тестів за середній порядок елемента групи
 
 # permutation group
 gap> S:=SymmetricGroup(9);
-Sym( [ 1 .. 9 ] )
+Sym( [ 1 . 9] )
 gap> AvgOrdOfGroup(S);
 3291487/362880
 ```
 
-As you see, the test file may include comments, with certain rules specifying
-where they may be placed, because one should be able to distinguish comments
-in the test file from GAP output started with `#`. For that purpose,
+Як бачите, у файлі з тестами містяться коментарі, які визначають
+, де вони можуть бути розміщені, тому що ви зможете розрізняти коментарі
+у тестовому файлі від виходу GAP почався з `#`. For that purpose,
 lines at the beginning of the test file that start with `#`, and one empty line
 together with one or more lines starting with `#`, are considered as comments.
-All other lines are interpreted as GAP output from the preceding GAP input.
+Усі інші лінії інтерпретуються як вихід GAP з попереднього введення GAP.
 
-To run the test, one should use the function `Test` (see
+Щоб запустити тест, використайте функцію `Тест` (див.
 [documentation](https://docs.gap-system.org/doc/ref/chap7.html#X87712F9D8732193C).
-For example (assuming that the function `AvgOrdOfGroup` is already loaded):
+Наприклад, (якщо припустити, що функція "AvgOrdOfGroup" вже завантажена):
 
 ```gap
-Test("avgord.tst");
+Тест("avgord.tst");
 ```
 
 ```output
-true
+істина
 ```
 
 In this case, `Test` reported no discrepancies and returned `true`, so we
@@ -86,9 +86,9 @@ nor will we cover the various options of the `Test` function, allowing us, for
 example, to ignore differences in the output formatting, or to display the progress
 of the test, as these are described in its documentation.
 
-Instead, we will now add more groups to `avgord.tst`, to demonstrate that the
-code also works with other kinds of groups, and to show various ways of
-combining commands in the test file:
+Натомість ми додамо більше груп, щоб "відмовитися. st\`, щоб продемонструвати, що
+код також працює з іншими групами, і щоб показати різні способи
+поєднання команд у тестовому файлі:
 
 ```gap
 # tests for average order of a group element
@@ -127,35 +127,35 @@ gap> AvgOrdOfGroup(SL(2,5));
 221/40
 ```
 
-Let us test the extended version of the test again and check that it works:
+Давайте перевіримо розширену версію тесту ще раз і перевіримо, чи вона працює:
 
 ```gap
-Test("avgord.tst");
+Тест("avgord.tst");
 ```
 
 ```output
-true
+істина
 ```
 
-Now we will work on a better implementation. Of course, the order of an element
+Тепер ми будемо працювати над кращою реалізацією. Of course, the order of an element
 is an invariant of a conjugacy class of elements of a group, so we need only to
-know the orders of conjugacy classes of elements and their representatives. The
-following code, which we add into `avgord.g`, reads into GAP and redefines
-`AvgOrdOfGroup` without any syntax errors:
+know the orders of conjugacy classes of elements and their representatives.
+наступний код, який ми додаємо в `avgord.g`, читається в GAP і змінює визначення
+`AvgOrdOfGroup` без жодних синтаксичних помилок:
 
 ```gap
 AvgOrdOfGroup := function(G)
-local cc, sum, c;
-cc:=ConjugacyClasses(G);
+local cc, сума, c;
+c:=ConjugacyClasses(G);
 sum:=0;
 for c in cc do
-  sum := sum + Order( Representative(c) ) * Size(cc);
+  sum := sum + Замовлення ( Представник (c) * Розмір (c);
 od;
 return sum/Size(G);
 end;
 ```
 
-but when we run the test, here comes a surprise!
+але коли ми будемо запускати тест, ось буде сюрприз!
 
 ```gap
 Read("avgord.g");
@@ -198,23 +198,23 @@ AvgOrdOfGroup(SL(2,5));
 false
 ```
 
-Indeed, we made a typo (deliberately) and replaced `Size(c)` by `Size(cc)`.
-The correct version of course should look as follows:
+Дійсно, ми зробили typo (навмисне) і замінили `Розмір(c)` розміром `Size(cc)`.
+Правильна версія, звичайно, повинна виглядати наступним чином:
 
 ```gap
 AvgOrdOfGroup := function(G)
-local cc, sum, c;
-cc:=ConjugacyClasses(G);
+local cc, сума, c;
+c:=ConjugacyClasses(G);
 sum:=0;
 for c in cc do
-  sum := sum + Order( Representative(c) ) * Size(c);
+  sum := sum + Замовлення ( Представник (c) * Розмір (c);
 od;
 return sum/Size(G);
 end;
 ```
 
-Now we will fix this in `avgord.g`, and read and test it again to check that
-the tests run correctly.
+Тепер ми виправимо це в `avgord.g`, і знову прочитайте і протестуємо знов, щоб переконатися, що
+тести виконані правильно.
 
 ```gap
 Read("avgord.g");
@@ -222,17 +222,17 @@ Test("avgord.tst");
 ```
 
 ```output
-true
+істина
 ```
 
-Thus, the approach 'Make it right, then make it fast' helped detect a bug
-immediately after it has been introduced.
+Таким чином, підхід 'Зроби це правильним, а потім зробити його швидкою' допоміг виявити помилку
+відразу після того, як він був представлений.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- It is easy to create a test file by copying and pasting a GAP session.
-- Writing a good and comprehensive test suite requires some effort.
-- Make it right, then make it fast!
+- Створення файла тестів легке шляхом копіювання та вставки сеансу GAP.
+- Написання доброго і всебічного тестового набори вимагає деяких зусиль.
+- Зробіть це правильно, а потім робіть це швидше!
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
