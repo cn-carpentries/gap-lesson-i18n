@@ -1,31 +1,31 @@
 ---
-title: Attributes and Methods
+title: Атрибути та Методи
 teaching: 40
 exercises: 10
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Declaring an attribute
-- Installing a method
-- Understanding method selection
-- Using debugging tools
+- Оголошення атрибуту
+- Встановлення методу
+- Вибір зрозумілих способів
+- Використання інструментів налагодження
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How to record information in GAP objects
+- Як записувати інформацію в об'єктах GAP
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-## Which function is faster?
+## Яка функція швидка?
 
-Try to repeatedly calculate `AvgOrdOfGroup(M11)` and `AvgOrdOfCollection(M11)`
-and compare runtimes. Do this for a new copy of `M11` and for the one for which
-this parameter has already been observed. What do you observe?
+Спробуйте повторно обчислити `AvgOrdOfGroup(M11)` і `AvgOrdOfCollection(M11)`
+та порівняти runtime. Зробіть це для нової копії `M11` та для тої, для якої
+цей параметр вже був збережений. Що ви бачите?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -35,7 +35,7 @@ However, as we see from the runtimes below, each new call of `AvgOrdOfGroup`
 will repeat the same computation again, with slightly varying runtime:
 
 ```gap
-A:=AlternatingGroup(10);
+А:=Альтернативна Група(10);
 ```
 
 ```output
@@ -43,7 +43,7 @@ Alt( [ 1 .. 10 ] )
 ```
 
 ```gap
-AvgOrdOfCollection(A); time; AvgOrdOfCollection(A); time;
+AvgOrdOfCollection(A); час; AvgOrdOfCollection(A); час;
 ```
 
 ```output
@@ -62,7 +62,7 @@ variable, but then you should be careful about matching such variables
 with corresponding groups, and the code could become quite convoluted
 and unreadable. On the other hand, GAP has the notion of an _attribute_ -- a
 data structure that is used to accumulate information that an object learns about itself
-during its lifetime. Consider the following example:
+during its lifetime. Розглянемо наступний приклад:
 
 ```gap
 G:=Group([ (1,2,3,4,5,6,7,8,9,10,11), (3,7,11,8)(4,10,5,6) ]);
@@ -82,35 +82,35 @@ establish that in the first call. The second call has zero cost since the
 result was stored in `G`, since `NrConjugacyClasses` is an attribute:
 
 ```gap
-NrConjugacyClasses;
+NrConjugacyClass;
 ```
 
 ```output
 <Attribute "NrConjugacyClasses">
 ```
 
-Our goal is now to learn how to create own attributes.
+Наша мета тепер - навчитися створювати власні атрибути.
 
-Since we already have a function `AvgOrdOfCollection` which
-does the calculation, the simplest way to turn it into
-an attribute is as follows:
+Оскільки у нас вже є функція "AvgOrdOfCollection", яка
+робить підрахунок, найпростіший спосіб перетворити її на
+атрибут наступним чином:
 
 ```gap
 AverageOrder := NewAttribute("AverageOrder", IsCollection);
-InstallMethod( AverageOrder, "for a collection", [IsCollection], AvgOrdOfCollection);
+InstallMethod( AverageOrder, "for a collection", [IsCollection], , AvgOrdOfCollection);
 ```
 
 In this example, first we declared an attribute `AverageOrder` for
 objects in the category `IsCollection`, and then installed the function
-`AvgOrdOfCollection` as a method for this attribute. Instead of calling
-the function `AvgOrdOfCollection`, we may now call `AverageOrder`.
+`AvgOrdOfCollection` as a method for this attribute. Замість виклику
+функцію "AvgOrdOfCollection", тепер ми можемо викликати "AverageOrder".
 
-Now we may check that subsequent calls of `AverageOrder` with the same argument
-are performed at zero cost. In this example the time is reduced from more than
-16 seconds to zero:
+Тепер ми можемо перевірити, що наступні виклики `AverageOrder` з тим же аргументом
+виконуються за нульовими витратами. У цьому прикладі час зменшується з більше ніж
+16 секунд до нуля:
 
 ```gap
-S:=SymmetricGroup(10);; AverageOrder(S); time; AverageOrder(S); time;
+S:=SymmetricGroup(10);; AverageOrder(S); час; AverageOrder(S); час;
 ```
 
 ```output
@@ -120,32 +120,32 @@ S:=SymmetricGroup(10);; AverageOrder(S); time; AverageOrder(S); time;
 0
 ```
 
-You may wonder why we have declared the operation for a collection and not only
-for a group, and why we have installed the inefficient `AvgOrdOfCollection`.
-After all, we have already developed the much more efficient `AvgOrdOfGroup`.
+Ви можете здивуватися, чому ми оголосили операцію для колекції, і не тільки
+для групи, і чому ми встановили неефективний `AvgOrdOfCollection`.
+Зрештою, ми вже розробили набагато ефективніші `AvgOrdOfGroup`.
 
 Imagine that you would like to be able to compute an average order
 both for a group and for a list which consists of objects having a multiplicative
-order. You may have a special function for each case, as we have. If it
+order. У кожного випадку ви можете мати особливу функцію, як і в нас. If it
 could happen that you don't know in advance the type of the object in question,
 you may add checks into the code and dispatch to a suitable function. This could
 quickly become complicated if you have several different functions for various
-types of objects. Instead of that, attributes are bunches of functions, called
-_methods_, and GAP's _method selection_ will choose the most efficient method
-based on the type of all arguments.
+types of objects. Замість цього атрибути є пучки функцій, називаються
+_методи_, і GAP-\* вибір \* буде обрати найбільш ефективний метод
+на основі всіх аргументів.
 
-To illustrate this, we will now install a method for `AverageOrder` for a group:
+Щоб проілюструвати це, ми тепер встановимо метод для групи "AverageOrder":
 
 ```gap
 InstallMethod( AverageOrder, [IsGroup], AvgOrdOfGroup);
 ```
 
-If you apply it to a group whose `AverageOrder` has already been computed, nothing
-will happen, since GAP will use the stored value. However, for a newly created group,
-this new method will be called:
+Якщо ви застосуєте його до групи, чию "AverageOrder" вже обчислено, нічого
+не станеться, оскільки GAP використовуватиме збережене значення. Однак, для новоствореної групи,
+буде викликано новим методом:
 
 ```gap
-S:=SymmetricGroup(10);; AverageOrder(S); time; AverageOrder(S); time;
+S:=SymmetricGroup(10);; AverageOrder(S); час; AverageOrder(S); час;
 ```
 
 ```output
@@ -157,26 +157,26 @@ S:=SymmetricGroup(10);; AverageOrder(S); time; AverageOrder(S); time;
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-## Which method is being called
+## Який метод називається
 
-- Try to call `AverageOrder` for a collection which is not a group
-  (a list of group elements and/or a conjugacy class of group elements).
+- Спробуйте викликати "AverageOrder" для колекції, яка не є групою
+  (список елементів групи та/або клас кон'югації елементів).
 
 - Debugging tools like `TraceMethods` may help you see which method is
   being called.
 
-- `ApplicableMethod` in combination with `PageSource` may point you to
-  the source code with all the comments.
+- `ApplicableMethod` у комбінації з `PageSource` може направити вас на вихідний код
+  з усіма коментарями.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-A _property_ is a boolean-valued attribute. It can be created using `NewProperty`
+_властивість_ - корисний для булевів. Він може бути створений використовуючи `NewProperty`
 
 ```gap
 IsIntegerAverageOrder := NewProperty("IsIntegerAverageOrder", IsCollection);
 ```
 
-Now we will install a method for `IsIntegerAverageOrder` for a collection.
+Тепер ми встановимо метод для колекції "IsIntegerAverageOrder".
 Observe that it is never necessary to create
 a function first and then install it as a method. The following method installation
 instead creates a new function as one of its arguments:
@@ -189,14 +189,14 @@ InstallMethod( IsIntegerAverageOrder,
 );
 ```
 
-Note that because `AverageOrder` is an attribute it will take care of the selection of
-the most suitable method.
+Зверніть увагу, що через `AverageOrder` є атрибутом, він піклується про вибір
+найбільш підходящий метод.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-## Does such a method always exist?
+## Чи існує такий метод?
 
-No. "No-method-found" is a special kind of error, and there are tools to
+Поз. "No-method-found" is a special kind of error, and there are tools to
 investigate such errors: see `?ShowArguments`, `?ShowDetails`, `?ShowMethods`
 and `?ShowOtherMethods`.
 
@@ -208,7 +208,7 @@ elements, for pc groups from the Small Groups Library it could be faster
 to iterate over their elements than to calculate conjugacy classes:
 
 ```gap
-l:=List([1..1000],i->SmallGroup(1536,i));; List(l,AvgOrdOfGroup);;time;
+l:=Список([1..1000],i->Смолл Група(1536,i));Список (l,AvgOrdOfGroup);час;
 ```
 
 ```output
@@ -216,7 +216,7 @@ l:=List([1..1000],i->SmallGroup(1536,i));; List(l,AvgOrdOfGroup);;time;
 ```
 
 ```gap
-l:=List([1..1000],i->SmallGroup(1536,i));; List(l,AvgOrdOfCollection);;time;
+l:=Список([1..1000],i->Смолл Група(1536,i));Список (l,AvgOrdOfCollection);час;
 ```
 
 ```output
@@ -225,22 +225,22 @@ l:=List([1..1000],i->SmallGroup(1536,i));; List(l,AvgOrdOfCollection);;time;
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Don't panic!
+## Не панікуйте!
 
 - Install a method for `IsPcGroup` that iterates over the group elements
   instead of calculations its conjugacy classes.
 
-- Estimate practical boundaries of its feasibility. Can you find an example
-  of a pc group where iterating is slower than calculating conjugacy classes?
+- Оцінка практичних кордонів його здійсненості. Ви можете знайти приклад
+  групи pc, де ітерація повільніша за розрахунок класів кон'югації?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- _Positional_ objects may accumulate information about themselves during their lifetime.
-- This means that next time the stored information may be retrieved at zero cost.
-- _Methods_ are bunches of functions; GAP's _method selection_ will choose the most efficient method based on the type of all arguments.
-- 'No-method-found' is a special kind of error with useful debugging tools helping to understand it.
+- _Позиційні_ об'єкти можуть накопичувати інформацію про себе протягом свого життя.
+- Це означає, що наступного разу збережена інформація може бути отримана за нульову ціну.
+- - Методи\* - пучки функцій. GAP \* обирає найбільш ефективний метод на основі типу всіх аргументів.
+- 'Без методу' є спеціальним видом помилки з корисними інструментами налагодження допомагає його розуміти.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
