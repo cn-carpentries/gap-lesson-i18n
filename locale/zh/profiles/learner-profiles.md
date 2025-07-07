@@ -2,4 +2,4 @@
 title: FIXME
 ---
 
-This is a placeholder file. Please add content here.
+这是一个占位符文件。 请在这里添加内容。
