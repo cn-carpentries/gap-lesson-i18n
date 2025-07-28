@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Run the Python script to generate .tst files
+echo "Generating .tst test files from episodes markdown"
+python generate_tst.py
+
+# Delay 2 seconds
+sleep 2
+
 # Set the GAP executable path
 GAP_EXEC="gap"
 
@@ -18,6 +25,7 @@ mkdir -p "$LOG_DIR"
 echo "Running GAP tests..."
 echo "Output log will be saved to: $LOG_FILE"
 echo "-------------------------------------"
+
 # Delay 2 seconds
 sleep 2
 
