@@ -4,8 +4,8 @@
 echo "Generating .tst test files from episodes markdown"
 python generate_tst.py
 
-# Delay 2 seconds
-sleep 2
+# Delay 1 seconds
+sleep 1
 
 # Set the GAP executable path
 GAP_EXEC="gap"
@@ -26,8 +26,8 @@ echo "Running GAP tests..."
 echo "Output log will be saved to: $LOG_FILE"
 echo "-------------------------------------"
 
-# Delay 2 seconds
-sleep 2
+# Delay 1 seconds
+sleep 1
 
 # Run GAP and simultaneously record logs (stdout + stderr), show real-time output on terminal
 "$GAP_EXEC" -q "$TEST_SCRIPT" 2>&1 | tee "$LOG_FILE"
