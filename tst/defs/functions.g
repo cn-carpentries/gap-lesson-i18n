@@ -1,5 +1,4 @@
-# defs/attributes.g
-# 定义
+# defs/functions.g
 
 AvgOrdOfCollection := function(G)
 local sum, g;

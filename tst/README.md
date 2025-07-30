@@ -9,7 +9,7 @@ This repository provides a testing framework and code generation pipeline for va
 ├── episodes/            # Original Markdown lesson files (input)
 ├── code/              # Source files referenced by Read("...")
 └── tst/                 # All test-related content lives here
-    ├── defs/            # GAP helper files (e.g. shared functions)
+    ├── defs/            # GAP files containing shared function definitions
     ├── log/             # Test output logs (auto-generated)
     ├── generate_tst.py  # Script to extract GAP/output blocks from Markdown
     ├── testall.g        # GAP entry script to run all .tst tests
